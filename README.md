@@ -2,6 +2,8 @@
 
 Relatório unificado (Visitas GSC + Palavras Semrush) publicado via GitHub Pages.
 
-**URL:** será exibida após o deploy.
+**URL:** https://pirondibr.github.io/mamba-seo-relatorio/
 
-> Contém dados de performance SEO do cliente. O repositório está público para o GitHub Pages funcionar no plano free — compartilhe o link com cuidado.
+**Repo:** https://github.com/pirondibr/mamba-seo-relatorio
+
+> O repositório é público (necessário para Pages no plano free). Compartilhe o link com cuidado.
