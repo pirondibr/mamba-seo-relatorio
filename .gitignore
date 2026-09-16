@@ -1,0 +1,13 @@
+# Credenciais e dados sensíveis
+credentials.json
+client_secret*.json
+token.json
+*.pickle
+__pycache__/
+.env
+gsc-cache-3meses.json
+*.xlsx
+_hide_focus.py
+
+# scripts locais (opcional — manter só o HTML público)
+# *.py
