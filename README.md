@@ -1,8 +1,10 @@
 # Relatório SEO — Mamba Digital
 
-Relatório unificado (Visitas GSC + Palavras Semrush) publicado via GitHub Pages.
+Relatórios publicados via GitHub Pages.
 
-**URL:** https://pirondibr.github.io/mamba-seo-relatorio/
+**Mamba Digital:** https://pirondibr.github.io/mamba-seo-relatorio/
+
+**Apet Saúde:** https://pirondibr.github.io/mamba-seo-relatorio/apet/
 
 **Repo:** https://github.com/pirondibr/mamba-seo-relatorio
 
