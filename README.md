@@ -2,7 +2,10 @@
 
 Relatórios publicados via GitHub Pages.
 
-**Mamba Digital:** https://pirondibr.github.io/mamba-seo-relatorio/
+**Mamba Digital (completo):** https://pirondibr.github.io/mamba-seo-relatorio/  
+Inclui Visitas GSC, Palavras Semrush e aba **Mercado Livre** (`#report-ml`).
+
+**Mercado Livre (página só):** https://pirondibr.github.io/mamba-seo-relatorio/mercado-livre/
 
 **Apet Saúde:** https://pirondibr.github.io/mamba-seo-relatorio/apet/
 
