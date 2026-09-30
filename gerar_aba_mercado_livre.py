@@ -18,6 +18,8 @@ from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
+from backlinks_data import BACKLINKS
+
 BASE = Path(r"c:\Users\Usuario\Desktop\mamba seo")
 TOKEN = BASE / "token.json"
 SITE = "sc-domain:mambadigital.com.br"
@@ -118,6 +120,17 @@ def is_ml_url(url: str) -> bool:
     return any(n in low for n in URL_NEEDLES)
 
 
+def worked_backlink_paths() -> set[str]:
+    """Paths de páginas Mamba que já constam no relatório de backlinks."""
+    paths: set[str] = set()
+    for row in BACKLINKS:
+        link = row[1] if len(row) > 1 else ""
+        if not link:
+            continue
+        paths.add(path_slug(link).lower())
+    return paths
+
+
 def agg_by_page(rows: list[dict]) -> dict[str, dict]:
     by: dict[str, dict] = {}
     for r in rows:
@@ -198,7 +211,8 @@ def delta_html(now: float, prev: float) -> str:
     return f'<span class="delta {cls}">{sign}{fmt_int(d)}</span>'
 
 
-def build_html(pages: list[dict], periods: dict) -> str:
+def build_html(pages: list[dict], periods: dict, worked_paths: set[str] | None = None) -> str:
+    worked_paths = worked_paths or worked_backlink_paths()
     labels = {
         "atual": f"Atual ({periods['atual'][0].strftime('%d/%m')}–{periods['atual'][1].strftime('%d/%m')})",
         "m1": f"Há 1 mês ({periods['m1'][0].strftime('%d/%m')}–{periods['m1'][1].strftime('%d/%m')})",
@@ -207,20 +221,29 @@ def build_html(pages: list[dict], periods: dict) -> str:
     }
     total_atual = sum(p["atual"]["clicks"] for p in pages)
     total_m1 = sum(p["m1"]["clicks"] for p in pages)
+    n_worked = sum(1 for p in pages if path_slug(p["url"]).lower() in worked_paths)
 
     rows_html = []
     details_html = []
     for i, p in enumerate(pages, 1):
         url = p["url"]
         short = path_slug(url)
+        worked = short.lower() in worked_paths
         a, m1, m2, m3 = p["atual"], p["m1"], p["m2"], p["m3"]
         pid = f"p{i}"
+        row_cls = ' class="row-worked"' if worked else ""
+        badge = (
+            '<span class="badge-worked" title="Já aparece no relatório de backlinks">Backlinks</span>'
+            if worked
+            else ""
+        )
         rows_html.append(
             f"""
-        <tr data-page="{pid}">
+        <tr data-page="{pid}" data-worked="{'1' if worked else '0'}"{row_cls}>
           <td class="rank">{i}</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="{pid}">{escape(short)}</button>
+            {badge}
             <a class="url" href="{escape(url)}" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">{fmt_int(a['clicks'])}</td>
@@ -247,11 +270,14 @@ def build_html(pages: list[dict], periods: dict) -> str:
             )
         if not qrows:
             qrows.append('<tr><td colspan="6" class="muted">Nenhuma query na janela atual.</td></tr>')
+        worked_label = (
+            ' <span class="badge-worked">Já trabalhamos (backlinks)</span>' if worked else ""
+        )
         details_html.append(
             f"""
-        <div class="detail" id="detail-{pid}" hidden>
+        <div class="detail{' detail-worked' if worked else ''}" id="detail-{pid}" hidden>
           <div class="detail-h">
-            <strong>{escape(short)}</strong>
+            <strong>{escape(short)}</strong>{worked_label}
             <a href="{escape(url)}" target="_blank" rel="noopener">{escape(url)}</a>
           </div>
           <div class="mini-cards">
@@ -284,6 +310,7 @@ def build_html(pages: list[dict], periods: dict) -> str:
     --bg: #f4f7fa; --surface: #fff; --surface2: #eef3f7; --border: #d5dee7;
     --text: #1a2330; --muted: #5c6b7a; --accent: #0d9488;
     --up: #059669; --down: #dc2626; --font: "Segoe UI", system-ui, sans-serif;
+    --worked: #b45309; --worked-bg: #fff7ed; --worked-border: #fdba74;
   }}
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
   body {{
@@ -304,6 +331,11 @@ def build_html(pages: list[dict], periods: dict) -> str:
     background: var(--surface); border: 1px solid var(--border);
     border-radius: 12px; padding: 0.95rem 1rem;
   }}
+  .card.worked-card {{
+    background: var(--worked-bg); border-color: var(--worked-border);
+  }}
+  .card.worked-card .label {{ color: var(--worked); }}
+  .card.worked-card .value {{ color: var(--worked); }}
   .card .label {{ font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }}
   .card .value {{ font-size: 1.55rem; font-weight: 700; margin-top: 0.2rem; }}
   .panel {{
@@ -334,6 +366,17 @@ def build_html(pages: list[dict], periods: dict) -> str:
   th.sortable.desc::after {{ content: " ↓"; opacity: 1; color: var(--accent); }}
   td {{ padding: 0.5rem 0.8rem; border-bottom: 1px solid rgba(213,222,231,0.9); vertical-align: top; }}
   tr:hover td {{ background: rgba(13,148,136,0.05); }}
+  tr.row-worked td {{
+    background: var(--worked-bg);
+    border-bottom-color: #fed7aa;
+  }}
+  tr.row-worked:hover td {{ background: #ffedd5; }}
+  tr.row-worked .page-toggle {{ color: var(--worked); }}
+  .badge-worked {{
+    display: inline-block; margin-left: 0.35rem; padding: 0.12rem 0.45rem;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: #fff; background: var(--worked); border-radius: 6px; vertical-align: middle;
+  }}
   .rank {{ color: var(--muted); width: 2.2rem; }}
   .num {{ text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }}
   .kw-text, .page-toggle {{ font-weight: 550; }}
@@ -352,6 +395,9 @@ def build_html(pages: list[dict], periods: dict) -> str:
   .detail {{
     border-top: 1px solid var(--border); padding: 1rem 1.1rem 1.25rem;
     background: #f8fafc;
+  }}
+  .detail.detail-worked {{
+    background: var(--worked-bg); border-top-color: var(--worked-border);
   }}
   .detail[hidden] {{ display: none !important; }}
   .detail-h {{ margin-bottom: 0.75rem; }}
@@ -372,6 +418,9 @@ def build_html(pages: list[dict], periods: dict) -> str:
     font-size: 0.72rem; padding: 0.25rem 0.55rem; border-radius: 999px;
     background: var(--bg); border: 1px solid var(--border); color: var(--muted);
   }}
+  .chip.chip-worked {{
+    background: var(--worked-bg); border-color: var(--worked-border); color: var(--worked); font-weight: 650;
+  }}
 </style>
 </head>
 <body>
@@ -383,6 +432,7 @@ def build_html(pages: list[dict], periods: dict) -> str:
 
   <div class="cards">
     <div class="card"><div class="label">Páginas</div><div class="value">{fmt_int(len(pages))}</div></div>
+    <div class="card worked-card"><div class="label">Com backlinks</div><div class="value">{fmt_int(n_worked)}</div></div>
     <div class="card"><div class="label">Cliques atuais</div><div class="value">{fmt_int(total_atual)}</div></div>
     <div class="card"><div class="label">Cliques há 1 mês</div><div class="value">{fmt_int(total_m1)}</div>
       {delta_html(total_atual, total_m1)}
@@ -394,6 +444,7 @@ def build_html(pages: list[dict], periods: dict) -> str:
       <h2>Priorização — tráfego e palavras</h2>
       <div class="chips">
         <span class="chip">{escape(labels['atual'])}</span>
+        <span class="chip chip-worked">Laranja = já no relatório de backlinks</span>
         <span class="chip">Clique na URL para ver queries</span>
       </div>
     </div>
@@ -422,7 +473,8 @@ def build_html(pages: list[dict], periods: dict) -> str:
     </div>
     <p class="note">
       Colunas de cliques = janelas de {WINDOW} dias. “Atual” termina em {END.strftime('%d/%m/%Y')} (GSC atrasa ~3 dias).
-      Delta sob 1/2/3 meses = atual − janela correspondente. Clique no path da página para abrir as palavras e posição média.
+      Delta sob 1/2/3 meses = atual − janela correspondente. Linhas em laranja já constam no relatório de backlinks (já trabalhamos).
+      Clique no path da página para abrir as palavras e posição média.
     </p>
     {''.join(details_html)}
   </div>
@@ -502,7 +554,32 @@ def empty_metrics() -> dict:
     return {"clicks": 0.0, "impressions": 0.0, "ctr": 0.0, "position": 0.0, "url": ""}
 
 
+def rebuild_from_cache() -> None:
+    """Regenera HTML a partir do cache GSC (sem chamar a API)."""
+    cache = json.loads(OUT_CACHE.read_text(encoding="utf-8"))
+    pages = cache["pages"]
+    periods = {
+        k: (date.fromisoformat(v[0]), date.fromisoformat(v[1]))
+        for k, v in cache["periods"].items()
+    }
+    worked = worked_backlink_paths()
+    html = build_html(pages, periods, worked)
+    OUT_HTML.write_text(html, encoding="utf-8")
+    OUT_DOCS.parent.mkdir(parents=True, exist_ok=True)
+    OUT_DOCS.write_text(html, encoding="utf-8")
+    n = sum(1 for p in pages if path_slug(p["url"]).lower() in worked)
+    print(f"OK (cache): {len(pages)} páginas · {n} com backlinks")
+    print(f"HTML: {OUT_HTML}")
+    print(f"Pages: {OUT_DOCS}")
+
+
 def main():
+    import sys
+
+    if "--from-cache" in sys.argv:
+        rebuild_from_cache()
+        return
+
     print(f"Propriedade: {SITE}")
     print(f"Janela: {WINDOW} dias | fim atual: {END.isoformat()}")
     service = get_service()
@@ -560,11 +637,13 @@ def main():
         ],
     }
     OUT_CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
-    html = build_html(pages, periods)
+    worked = worked_backlink_paths()
+    html = build_html(pages, periods, worked)
     OUT_HTML.write_text(html, encoding="utf-8")
     OUT_DOCS.parent.mkdir(parents=True, exist_ok=True)
     OUT_DOCS.write_text(html, encoding="utf-8")
-    print(f"\nOK: {len(pages)} páginas")
+    n = sum(1 for p in pages if path_slug(p["url"]).lower() in worked)
+    print(f"\nOK: {len(pages)} páginas · {n} com backlinks")
     print(f"HTML: {OUT_HTML}")
     print(f"Pages: {OUT_DOCS}")
     print(f"Cache: {OUT_CACHE}")

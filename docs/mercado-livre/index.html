@@ -9,6 +9,7 @@
     --bg: #f4f7fa; --surface: #fff; --surface2: #eef3f7; --border: #d5dee7;
     --text: #1a2330; --muted: #5c6b7a; --accent: #0d9488;
     --up: #059669; --down: #dc2626; --font: "Segoe UI", system-ui, sans-serif;
+    --worked: #b45309; --worked-bg: #fff7ed; --worked-border: #fdba74;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -29,6 +30,11 @@
     background: var(--surface); border: 1px solid var(--border);
     border-radius: 12px; padding: 0.95rem 1rem;
   }
+  .card.worked-card {
+    background: var(--worked-bg); border-color: var(--worked-border);
+  }
+  .card.worked-card .label { color: var(--worked); }
+  .card.worked-card .value { color: var(--worked); }
   .card .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }
   .card .value { font-size: 1.55rem; font-weight: 700; margin-top: 0.2rem; }
   .panel {
@@ -59,6 +65,17 @@
   th.sortable.desc::after { content: " ↓"; opacity: 1; color: var(--accent); }
   td { padding: 0.5rem 0.8rem; border-bottom: 1px solid rgba(213,222,231,0.9); vertical-align: top; }
   tr:hover td { background: rgba(13,148,136,0.05); }
+  tr.row-worked td {
+    background: var(--worked-bg);
+    border-bottom-color: #fed7aa;
+  }
+  tr.row-worked:hover td { background: #ffedd5; }
+  tr.row-worked .page-toggle { color: var(--worked); }
+  .badge-worked {
+    display: inline-block; margin-left: 0.35rem; padding: 0.12rem 0.45rem;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: #fff; background: var(--worked); border-radius: 6px; vertical-align: middle;
+  }
   .rank { color: var(--muted); width: 2.2rem; }
   .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .kw-text, .page-toggle { font-weight: 550; }
@@ -77,6 +94,9 @@
   .detail {
     border-top: 1px solid var(--border); padding: 1rem 1.1rem 1.25rem;
     background: #f8fafc;
+  }
+  .detail.detail-worked {
+    background: var(--worked-bg); border-top-color: var(--worked-border);
   }
   .detail[hidden] { display: none !important; }
   .detail-h { margin-bottom: 0.75rem; }
@@ -97,6 +117,9 @@
     font-size: 0.72rem; padding: 0.25rem 0.55rem; border-radius: 999px;
     background: var(--bg); border: 1px solid var(--border); color: var(--muted);
   }
+  .chip.chip-worked {
+    background: var(--worked-bg); border-color: var(--worked-border); color: var(--worked); font-weight: 650;
+  }
 </style>
 </head>
 <body>
@@ -108,6 +131,7 @@
 
   <div class="cards">
     <div class="card"><div class="label">Páginas</div><div class="value">94</div></div>
+    <div class="card worked-card"><div class="label">Com backlinks</div><div class="value">2</div></div>
     <div class="card"><div class="label">Cliques atuais</div><div class="value">745</div></div>
     <div class="card"><div class="label">Cliques há 1 mês</div><div class="value">829</div>
       <span class="delta down">-84</span>
@@ -119,6 +143,7 @@
       <h2>Priorização — tráfego e palavras</h2>
       <div class="chips">
         <span class="chip">Atual (31/08–27/09)</span>
+        <span class="chip chip-worked">Laranja = já no relatório de backlinks</span>
         <span class="chip">Clique na URL para ver queries</span>
       </div>
     </div>
@@ -142,10 +167,11 @@
         </thead>
         <tbody>
           
-        <tr data-page="p1">
+        <tr data-page="p1" data-worked="0">
           <td class="rank">1</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p1">/blog/programa-afiliados-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/programa-afiliados-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">72</td>
@@ -156,10 +182,11 @@
           <td class="num">7,3</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p2">
+        <tr data-page="p2" data-worked="0">
           <td class="rank">2</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p2">/blog/produtos-extragrandes-full-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/produtos-extragrandes-full-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">69</td>
@@ -170,10 +197,11 @@
           <td class="num">6,2</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p3">
+        <tr data-page="p3" data-worked="0">
           <td class="rank">3</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p3">/blog/estoque-multi-origem-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/estoque-multi-origem-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">64</td>
@@ -184,10 +212,11 @@
           <td class="num">3,6</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p4">
+        <tr data-page="p4" data-worked="1" class="row-worked">
           <td class="rank">4</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p4">/blog/simulador-de-custos-do-mercado-livre</button>
+            <span class="badge-worked" title="Já aparece no relatório de backlinks">Backlinks</span>
             <a class="url" href="https://mambadigital.com.br/blog/simulador-de-custos-do-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">46</td>
@@ -198,10 +227,11 @@
           <td class="num">9,0</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p5">
+        <tr data-page="p5" data-worked="0">
           <td class="rank">5</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p5">/blog/mercado-livre-china</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/mercado-livre-china" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">40</td>
@@ -212,10 +242,11 @@
           <td class="num">6,0</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p6">
+        <tr data-page="p6" data-worked="0">
           <td class="rank">6</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p6">/blog/10-primeiras-vendas-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/10-primeiras-vendas-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">31</td>
@@ -226,10 +257,11 @@
           <td class="num">6,2</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p7">
+        <tr data-page="p7" data-worked="0">
           <td class="rank">7</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p7">/blog/inteligencia-artificial-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/inteligencia-artificial-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">26</td>
@@ -240,10 +272,11 @@
           <td class="num">7,6</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p8">
+        <tr data-page="p8" data-worked="0">
           <td class="rank">8</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p8">/blog/mercado-livre-farma-produtos-farmaceuticos</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/mercado-livre-farma-produtos-farmaceuticos" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">21</td>
@@ -254,10 +287,11 @@
           <td class="num">6,4</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p9">
+        <tr data-page="p9" data-worked="0">
           <td class="rank">9</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p9">/blog/produtos-proibidos-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/produtos-proibidos-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">19</td>
@@ -268,10 +302,11 @@
           <td class="num">5,7</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p10">
+        <tr data-page="p10" data-worked="0">
           <td class="rank">10</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p10">/blog/como-medir-embalagens-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/como-medir-embalagens-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">19</td>
@@ -282,10 +317,11 @@
           <td class="num">6,5</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p11">
+        <tr data-page="p11" data-worked="0">
           <td class="rank">11</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p11">/blog/programa-decola-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/programa-decola-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">18</td>
@@ -296,10 +332,11 @@
           <td class="num">6,5</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p12">
+        <tr data-page="p12" data-worked="0">
           <td class="rank">12</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p12">/blog/kit-de-produtos-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/kit-de-produtos-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">17</td>
@@ -310,10 +347,11 @@
           <td class="num">6,2</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p13">
+        <tr data-page="p13" data-worked="0">
           <td class="rank">13</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p13">/assessoria-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/assessoria-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">17</td>
@@ -324,10 +362,11 @@
           <td class="num">8,6</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p14">
+        <tr data-page="p14" data-worked="0">
           <td class="rank">14</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p14">/blog/frete-gratis-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/frete-gratis-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">14</td>
@@ -338,10 +377,11 @@
           <td class="num">7,9</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p15">
+        <tr data-page="p15" data-worked="0">
           <td class="rank">15</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p15">/blog/cpf-ou-cnpj-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/cpf-ou-cnpj-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">14</td>
@@ -352,10 +392,11 @@
           <td class="num">7,6</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p16">
+        <tr data-page="p16" data-worked="0">
           <td class="rank">16</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p16">/blog/brand-ads-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/brand-ads-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">14</td>
@@ -366,10 +407,11 @@
           <td class="num">6,2</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p17">
+        <tr data-page="p17" data-worked="0">
           <td class="rank">17</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p17">/blog/identificando-tendencias-do-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/identificando-tendencias-do-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">13</td>
@@ -380,10 +422,11 @@
           <td class="num">6,8</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p18">
+        <tr data-page="p18" data-worked="0">
           <td class="rank">18</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p18">/blog/amazon-ou-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/amazon-ou-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">13</td>
@@ -394,10 +437,11 @@
           <td class="num">7,0</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p19">
+        <tr data-page="p19" data-worked="0">
           <td class="rank">19</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p19">/blog/como-e-feita-a-devolucao-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/como-e-feita-a-devolucao-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">11</td>
@@ -408,10 +452,11 @@
           <td class="num">8,8</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p20">
+        <tr data-page="p20" data-worked="0">
           <td class="rank">20</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p20">/blog/mercado-livre-shopee-ou-amazon</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/mercado-livre-shopee-ou-amazon" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">10</td>
@@ -422,10 +467,11 @@
           <td class="num">7,2</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p21">
+        <tr data-page="p21" data-worked="0">
           <td class="rank">21</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p21">/blog/consultoria-platinum-mercado-livre-selo</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/consultoria-platinum-mercado-livre-selo" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">10</td>
@@ -436,10 +482,11 @@
           <td class="num">6,1</td>
           <td class="num">9</td>
         </tr>
-        <tr data-page="p22">
+        <tr data-page="p22" data-worked="0">
           <td class="rank">22</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p22">/blog/shopee-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/shopee-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">9</td>
@@ -450,10 +497,11 @@
           <td class="num">7,6</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p23">
+        <tr data-page="p23" data-worked="0">
           <td class="rank">23</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p23">/blog/mercado-livre-clips-com-ebook</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/mercado-livre-clips-com-ebook" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">9</td>
@@ -464,10 +512,11 @@
           <td class="num">8,2</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p24">
+        <tr data-page="p24" data-worked="0">
           <td class="rank">24</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p24">/blog/preco-de-venda-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/preco-de-venda-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">9</td>
@@ -478,10 +527,11 @@
           <td class="num">10,8</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p25">
+        <tr data-page="p25" data-worked="0">
           <td class="rank">25</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p25">/blog/follow-ads-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/follow-ads-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">9</td>
@@ -492,10 +542,11 @@
           <td class="num">5,0</td>
           <td class="num">7</td>
         </tr>
-        <tr data-page="p26">
+        <tr data-page="p26" data-worked="1" class="row-worked">
           <td class="rank">26</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p26">/blog/como-ganhar-dinheiro-no-mercado-livre</button>
+            <span class="badge-worked" title="Já aparece no relatório de backlinks">Backlinks</span>
             <a class="url" href="https://mambadigital.com.br/blog/como-ganhar-dinheiro-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">8</td>
@@ -506,10 +557,11 @@
           <td class="num">8,1</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p27">
+        <tr data-page="p27" data-worked="0">
           <td class="rank">27</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p27">/blog/o-que-e-acos-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/o-que-e-acos-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">8</td>
@@ -520,10 +572,11 @@
           <td class="num">7,2</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p28">
+        <tr data-page="p28" data-worked="0">
           <td class="rank">28</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p28">/blog/algoritmo-do-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/algoritmo-do-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">8</td>
@@ -534,10 +587,11 @@
           <td class="num">6,6</td>
           <td class="num">14</td>
         </tr>
-        <tr data-page="p29">
+        <tr data-page="p29" data-worked="0">
           <td class="rank">29</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p29">/blog/palavra-chave-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/palavra-chave-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">8</td>
@@ -548,10 +602,11 @@
           <td class="num">7,9</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p30">
+        <tr data-page="p30" data-worked="0">
           <td class="rank">30</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p30">/blog/analytics-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/analytics-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">8</td>
@@ -562,10 +617,11 @@
           <td class="num">9,4</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p31">
+        <tr data-page="p31" data-worked="0">
           <td class="rank">31</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p31">/blog/responder-denuncia-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/responder-denuncia-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">8</td>
@@ -576,10 +632,11 @@
           <td class="num">6,4</td>
           <td class="num">4</td>
         </tr>
-        <tr data-page="p32">
+        <tr data-page="p32" data-worked="0">
           <td class="rank">32</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p32">/blog/margem-de-lucro-ideal-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/margem-de-lucro-ideal-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">7</td>
@@ -590,10 +647,11 @@
           <td class="num">5,7</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p33">
+        <tr data-page="p33" data-worked="0">
           <td class="rank">33</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p33">/blog/nota-fiscal-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/nota-fiscal-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">6</td>
@@ -604,10 +662,11 @@
           <td class="num">9,2</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p34">
+        <tr data-page="p34" data-worked="0">
           <td class="rank">34</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p34">/blog/como-gerenciar-o-estoque-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/como-gerenciar-o-estoque-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">6</td>
@@ -618,10 +677,11 @@
           <td class="num">7,7</td>
           <td class="num">11</td>
         </tr>
-        <tr data-page="p35">
+        <tr data-page="p35" data-worked="0">
           <td class="rank">35</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p35">/blog/selos-oficiais-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/selos-oficiais-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">6</td>
@@ -632,10 +692,11 @@
           <td class="num">6,4</td>
           <td class="num">8</td>
         </tr>
-        <tr data-page="p36">
+        <tr data-page="p36" data-worked="0">
           <td class="rank">36</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p36">/blog/black-friday-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/black-friday-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">6</td>
@@ -646,10 +707,11 @@
           <td class="num">3,6</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p37">
+        <tr data-page="p37" data-worked="0">
           <td class="rank">37</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p37">/blog/anuncio-pausado-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/anuncio-pausado-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">5</td>
@@ -660,10 +722,11 @@
           <td class="num">7,8</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p38">
+        <tr data-page="p38" data-worked="0">
           <td class="rank">38</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p38">/blog/conheca-a-entrega-full-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/conheca-a-entrega-full-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">5</td>
@@ -674,10 +737,11 @@
           <td class="num">10,4</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p39">
+        <tr data-page="p39" data-worked="0">
           <td class="rank">39</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p39">/blog/modo-ferias-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/modo-ferias-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">5</td>
@@ -688,10 +752,11 @@
           <td class="num">5,9</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p40">
+        <tr data-page="p40" data-worked="0">
           <td class="rank">40</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p40">/blog/tabela-de-medidas-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/tabela-de-medidas-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">5</td>
@@ -702,10 +767,11 @@
           <td class="num">7,2</td>
           <td class="num">12</td>
         </tr>
-        <tr data-page="p41">
+        <tr data-page="p41" data-worked="0">
           <td class="rank">41</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p41">/blog/estrategia-precificacao-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/estrategia-precificacao-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">5</td>
@@ -716,10 +782,11 @@
           <td class="num">7,0</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p42">
+        <tr data-page="p42" data-worked="0">
           <td class="rank">42</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p42">/blog/envios-turbo-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/envios-turbo-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">5</td>
@@ -730,10 +797,11 @@
           <td class="num">6,8</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p43">
+        <tr data-page="p43" data-worked="0">
           <td class="rank">43</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p43">/blog/avaliacoes-positivas-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/avaliacoes-positivas-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">3</td>
@@ -744,10 +812,11 @@
           <td class="num">8,2</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p44">
+        <tr data-page="p44" data-worked="0">
           <td class="rank">44</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p44">/blog/politica-de-frete-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/politica-de-frete-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">3</td>
@@ -758,10 +827,11 @@
           <td class="num">8,8</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p45">
+        <tr data-page="p45" data-worked="0">
           <td class="rank">45</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p45">/blog/como-cadastrar-produtos-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/como-cadastrar-produtos-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">3</td>
@@ -772,10 +842,11 @@
           <td class="num">7,4</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p46">
+        <tr data-page="p46" data-worked="0">
           <td class="rank">46</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p46">/blog/quais-sao-as-taxas-do-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/quais-sao-as-taxas-do-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">3</td>
@@ -786,10 +857,11 @@
           <td class="num">9,8</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p47">
+        <tr data-page="p47" data-worked="0">
           <td class="rank">47</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p47">/blog/como-criar-promocoes-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/como-criar-promocoes-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">3</td>
@@ -800,10 +872,11 @@
           <td class="num">7,5</td>
           <td class="num">8</td>
         </tr>
-        <tr data-page="p48">
+        <tr data-page="p48" data-worked="0">
           <td class="rank">48</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p48">/blog/categoria-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/categoria-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">3</td>
@@ -814,10 +887,11 @@
           <td class="num">7,7</td>
           <td class="num">14</td>
         </tr>
-        <tr data-page="p49">
+        <tr data-page="p49" data-worked="0">
           <td class="rank">49</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p49">/blog/o-que-vender-no-mercado-livre-2026</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/o-que-vender-no-mercado-livre-2026" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">3</td>
@@ -828,10 +902,11 @@
           <td class="num">7,2</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p50">
+        <tr data-page="p50" data-worked="0">
           <td class="rank">50</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p50">/blog/buy-box-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/buy-box-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">3</td>
@@ -842,10 +917,11 @@
           <td class="num">6,3</td>
           <td class="num">7</td>
         </tr>
-        <tr data-page="p51">
+        <tr data-page="p51" data-worked="0">
           <td class="rank">51</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p51">/blog/o-guia-para-vender-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/o-guia-para-vender-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">2</td>
@@ -856,10 +932,11 @@
           <td class="num">8,7</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p52">
+        <tr data-page="p52" data-worked="0">
           <td class="rank">52</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p52">/blog/como-abrir-uma-loja-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/como-abrir-uma-loja-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">2</td>
@@ -870,10 +947,11 @@
           <td class="num">9,5</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p53">
+        <tr data-page="p53" data-worked="0">
           <td class="rank">53</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p53">/blog/loja-oficial-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/loja-oficial-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">2</td>
@@ -884,10 +962,11 @@
           <td class="num">8,1</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p54">
+        <tr data-page="p54" data-worked="0">
           <td class="rank">54</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p54">/blog/evitar-cancelamentos-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/evitar-cancelamentos-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">2</td>
@@ -898,10 +977,11 @@
           <td class="num">9,0</td>
           <td class="num">6</td>
         </tr>
-        <tr data-page="p55">
+        <tr data-page="p55" data-worked="0">
           <td class="rank">55</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p55">/blog/banimentos-contas-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/banimentos-contas-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">2</td>
@@ -912,10 +992,11 @@
           <td class="num">8,6</td>
           <td class="num">1</td>
         </tr>
-        <tr data-page="p56">
+        <tr data-page="p56" data-worked="0">
           <td class="rank">56</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p56">/blog/anuncio-de-catalogo-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/anuncio-de-catalogo-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">1</td>
@@ -926,10 +1007,11 @@
           <td class="num">8,9</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p57">
+        <tr data-page="p57" data-worked="0">
           <td class="rank">57</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p57">/blog/mercado-livre-ads-como-funciona</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/mercado-livre-ads-como-funciona" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">1</td>
@@ -940,10 +1022,11 @@
           <td class="num">10,0</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p58">
+        <tr data-page="p58" data-worked="0">
           <td class="rank">58</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p58">/blog/vender-no-mercado-livre-2025</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/vender-no-mercado-livre-2025" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">1</td>
@@ -954,10 +1037,11 @@
           <td class="num">9,9</td>
           <td class="num">10</td>
         </tr>
-        <tr data-page="p59">
+        <tr data-page="p59" data-worked="0">
           <td class="rank">59</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p59">/blog/como-se-destacar-concorrencia-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/como-se-destacar-concorrencia-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">1</td>
@@ -968,10 +1052,11 @@
           <td class="num">17,3</td>
           <td class="num">9</td>
         </tr>
-        <tr data-page="p60">
+        <tr data-page="p60" data-worked="0">
           <td class="rank">60</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p60">/blog/desafios-novos-vendedores-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/desafios-novos-vendedores-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">1</td>
@@ -982,10 +1067,11 @@
           <td class="num">8,0</td>
           <td class="num">1</td>
         </tr>
-        <tr data-page="p61">
+        <tr data-page="p61" data-worked="0">
           <td class="rank">61</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p61">/blog/tacos-mercado-livre-precificacao</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/tacos-mercado-livre-precificacao" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">1</td>
@@ -996,10 +1082,11 @@
           <td class="num">5,3</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p62">
+        <tr data-page="p62" data-worked="0">
           <td class="rank">62</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p62">/blog/category/mercado-livre/page/5</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/category/mercado-livre/page/5" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">1</td>
@@ -1010,10 +1097,11 @@
           <td class="num">13,8</td>
           <td class="num">1</td>
         </tr>
-        <tr data-page="p63">
+        <tr data-page="p63" data-worked="0">
           <td class="rank">63</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p63">/blog/estoque-multi-origem-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/estoque-multi-origem-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">1</td>
@@ -1024,10 +1112,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p64">
+        <tr data-page="p64" data-worked="0">
           <td class="rank">64</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p64">/blog/shopee-ou-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/shopee-ou-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1038,10 +1127,11 @@
           <td class="num">9,4</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p65">
+        <tr data-page="p65" data-worked="0">
           <td class="rank">65</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p65">/blog/novas-taxas-de-venda-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/novas-taxas-de-venda-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1052,10 +1142,11 @@
           <td class="num">11,1</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p66">
+        <tr data-page="p66" data-worked="0">
           <td class="rank">66</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p66">/web-stories/shopee-ou-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/web-stories/shopee-ou-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1066,10 +1157,11 @@
           <td class="num">4,6</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p67">
+        <tr data-page="p67" data-worked="0">
           <td class="rank">67</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p67">/blog/mercado-livre-57-bilhoes-investimento</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/mercado-livre-57-bilhoes-investimento" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1080,10 +1172,11 @@
           <td class="num">7,9</td>
           <td class="num">4</td>
         </tr>
-        <tr data-page="p68">
+        <tr data-page="p68" data-worked="0">
           <td class="rank">68</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p68">/blog/descontos-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/descontos-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1094,10 +1187,11 @@
           <td class="num">8,8</td>
           <td class="num">1</td>
         </tr>
-        <tr data-page="p69">
+        <tr data-page="p69" data-worked="0">
           <td class="rank">69</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p69">/blog/category/mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/category/mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1108,10 +1202,11 @@
           <td class="num">8,1</td>
           <td class="num">10</td>
         </tr>
-        <tr data-page="p70">
+        <tr data-page="p70" data-worked="0">
           <td class="rank">70</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p70">/blog/como-evitar-reclamacoes-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/como-evitar-reclamacoes-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1122,10 +1217,11 @@
           <td class="num">9,3</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p71">
+        <tr data-page="p71" data-worked="0">
           <td class="rank">71</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p71">/blog/tecnicas-copywriting-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/tecnicas-copywriting-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1136,10 +1232,11 @@
           <td class="num">8,0</td>
           <td class="num">1</td>
         </tr>
-        <tr data-page="p72">
+        <tr data-page="p72" data-worked="0">
           <td class="rank">72</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p72">/blog/como-vender-com-o-mercado-livre-ads</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/como-vender-com-o-mercado-livre-ads" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1150,10 +1247,11 @@
           <td class="num">35,7</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p73">
+        <tr data-page="p73" data-worked="0">
           <td class="rank">73</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p73">/blog/como-anunciar-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/como-anunciar-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1164,10 +1262,11 @@
           <td class="num">20,4</td>
           <td class="num">15</td>
         </tr>
-        <tr data-page="p74">
+        <tr data-page="p74" data-worked="0">
           <td class="rank">74</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p74">/blog/oferta-do-dia-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/oferta-do-dia-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1178,10 +1277,11 @@
           <td class="num">8,6</td>
           <td class="num">2</td>
         </tr>
-        <tr data-page="p75">
+        <tr data-page="p75" data-worked="0">
           <td class="rank">75</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p75">/blog/category/mercado-livre/page/2</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/category/mercado-livre/page/2" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1192,10 +1292,11 @@
           <td class="num">13,3</td>
           <td class="num">1</td>
         </tr>
-        <tr data-page="p76">
+        <tr data-page="p76" data-worked="0">
           <td class="rank">76</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p76">/web-stories/amazon-ou-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/web-stories/amazon-ou-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1206,10 +1307,11 @@
           <td class="num">5,2</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p77">
+        <tr data-page="p77" data-worked="0">
           <td class="rank">77</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p77">/web-stories/mercado-livre-ads</button>
+            
             <a class="url" href="https://mambadigital.com.br/web-stories/mercado-livre-ads" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1220,10 +1322,11 @@
           <td class="num">10,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p78">
+        <tr data-page="p78" data-worked="0">
           <td class="rank">78</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p78">/blog/qual-o-melhor-marketplace-mercado-livre-shopee-ou-amazon</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/qual-o-melhor-marketplace-mercado-livre-shopee-ou-amazon" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1234,10 +1337,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p79">
+        <tr data-page="p79" data-worked="0">
           <td class="rank">79</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p79">/blog/10-primeiras-vendas-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/10-primeiras-vendas-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1248,10 +1352,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p80">
+        <tr data-page="p80" data-worked="0">
           <td class="rank">80</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p80">/blog/anuncio-pausado-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/anuncio-pausado-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1262,10 +1367,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p81">
+        <tr data-page="p81" data-worked="0">
           <td class="rank">81</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p81">/blog/anuncio-pausado-mercado-livre-causas-e-solucoes</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/anuncio-pausado-mercado-livre-causas-e-solucoes" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1276,10 +1382,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p82">
+        <tr data-page="p82" data-worked="0">
           <td class="rank">82</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p82">/blog/anuncio-pausado-no-mercadolivre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/anuncio-pausado-no-mercadolivre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1290,10 +1397,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p83">
+        <tr data-page="p83" data-worked="0">
           <td class="rank">83</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p83">/blog/buy-box-no-mercado-livre-o-que-e-como-ganhar</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/buy-box-no-mercado-livre-o-que-e-como-ganhar" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1304,10 +1412,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p84">
+        <tr data-page="p84" data-worked="0">
           <td class="rank">84</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p84">/blog/categoria-mercado-livre-como-elegida</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/categoria-mercado-livre-como-elegida" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1318,10 +1427,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p85">
+        <tr data-page="p85" data-worked="0">
           <td class="rank">85</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p85">/blog/como-e-feita-devolucao-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/como-e-feita-devolucao-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1332,10 +1442,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p86">
+        <tr data-page="p86" data-worked="0">
           <td class="rank">86</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p86">/blog/margem-ideal-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/margem-ideal-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1346,10 +1457,11 @@
           <td class="num">1,0</td>
           <td class="num">1</td>
         </tr>
-        <tr data-page="p87">
+        <tr data-page="p87" data-worked="0">
           <td class="rank">87</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p87">/blog/marketplace-guia-mercado-livre-shopee-amazon</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/marketplace-guia-mercado-livre-shopee-amazon" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1360,10 +1472,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p88">
+        <tr data-page="p88" data-worked="0">
           <td class="rank">88</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p88">/blog/mercado-livre-shopee-amazon</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/mercado-livre-shopee-amazon" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1374,10 +1487,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p89">
+        <tr data-page="p89" data-worked="0">
           <td class="rank">89</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p89">/blog/programa-afiliados-mercado-livre-como-funciona-comissao-afiliados-ml</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/programa-afiliados-mercado-livre-como-funciona-comissao-afiliados-ml" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1388,10 +1502,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p90">
+        <tr data-page="p90" data-worked="0">
           <td class="rank">90</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p90">/blog/qual-o-melhor-marketplace-mercado-livre-shopee-amazon</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/qual-o-melhor-marketplace-mercado-livre-shopee-amazon" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1402,10 +1517,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p91">
+        <tr data-page="p91" data-worked="0">
           <td class="rank">91</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p91">/blog/responder-denuncia-no-mercadolivre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/responder-denuncia-no-mercadolivre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1416,10 +1532,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p92">
+        <tr data-page="p92" data-worked="0">
           <td class="rank">92</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p92">/blog/vender-mercadolivre-cpf-cnpj</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/vender-mercadolivre-cpf-cnpj" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1430,10 +1547,11 @@
           <td class="num">1,0</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p93">
+        <tr data-page="p93" data-worked="0">
           <td class="rank">93</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p93">/blog/category/guia-completo-para-vender-no-mercado-livre</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/category/guia-completo-para-vender-no-mercado-livre" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1444,10 +1562,11 @@
           <td class="num">—</td>
           <td class="num">0</td>
         </tr>
-        <tr data-page="p94">
+        <tr data-page="p94" data-worked="0">
           <td class="rank">94</td>
           <td class="kw">
             <button type="button" class="page-toggle" data-target="p94">/blog/category/mercado-livre/page/3</button>
+            
             <a class="url" href="https://mambadigital.com.br/blog/category/mercado-livre/page/3" target="_blank" rel="noopener">abrir</a>
           </td>
           <td class="num">0</td>
@@ -1463,7 +1582,8 @@
     </div>
     <p class="note">
       Colunas de cliques = janelas de 28 dias. “Atual” termina em 27/09/2026 (GSC atrasa ~3 dias).
-      Delta sob 1/2/3 meses = atual − janela correspondente. Clique no path da página para abrir as palavras e posição média.
+      Delta sob 1/2/3 meses = atual − janela correspondente. Linhas em laranja já constam no relatório de backlinks (já trabalhamos).
+      Clique no path da página para abrir as palavras e posição média.
     </p>
     
         <div class="detail" id="detail-p1" hidden>
@@ -1892,9 +2012,9 @@
             </table>
           </div>
         </div>
-        <div class="detail" id="detail-p4" hidden>
+        <div class="detail detail-worked" id="detail-p4" hidden>
           <div class="detail-h">
-            <strong>/blog/simulador-de-custos-do-mercado-livre</strong>
+            <strong>/blog/simulador-de-custos-do-mercado-livre</strong> <span class="badge-worked">Já trabalhamos (backlinks)</span>
             <a href="https://mambadigital.com.br/blog/simulador-de-custos-do-mercado-livre" target="_blank" rel="noopener">https://mambadigital.com.br/blog/simulador-de-custos-do-mercado-livre</a>
           </div>
           <div class="mini-cards">
@@ -4904,9 +5024,9 @@
             </table>
           </div>
         </div>
-        <div class="detail" id="detail-p26" hidden>
+        <div class="detail detail-worked" id="detail-p26" hidden>
           <div class="detail-h">
-            <strong>/blog/como-ganhar-dinheiro-no-mercado-livre</strong>
+            <strong>/blog/como-ganhar-dinheiro-no-mercado-livre</strong> <span class="badge-worked">Já trabalhamos (backlinks)</span>
             <a href="https://mambadigital.com.br/blog/como-ganhar-dinheiro-no-mercado-livre" target="_blank" rel="noopener">https://mambadigital.com.br/blog/como-ganhar-dinheiro-no-mercado-livre</a>
           </div>
           <div class="mini-cards">
@@ -10792,7 +10912,7 @@
         </div>
   </div>
 
-  <footer>Gerado em 30/09/2026 15:05 · sc-domain:mambadigital.com.br</footer>
+  <footer>Gerado em 30/09/2026 15:11 · sc-domain:mambadigital.com.br</footer>
 </div>
 <script>
 (function () {
