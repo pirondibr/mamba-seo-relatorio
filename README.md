@@ -9,6 +9,8 @@ Inclui Visitas GSC, Palavras Semrush e aba **Mercado Livre** (`#report-ml`).
 
 **Apet Saúde:** https://pirondibr.github.io/mamba-seo-relatorio/apet/
 
+**Clínica Ulisses Odontologia:** https://pirondibr.github.io/mamba-seo-relatorio/clinica-ulisses/
+
 **Repo:** https://github.com/pirondibr/mamba-seo-relatorio
 
 > O repositório é público (necessário para Pages no plano free). Compartilhe o link com cuidado.
