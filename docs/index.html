@@ -721,6 +721,10 @@
   .cross-link:hover { border-color: var(--accent, #0d9488); }
   button.tab[data-view="focus"], #v-view-focus, #view-focus { display: none !important; }
   button.tab[data-view="daily"], #v-view-daily, #view-daily { display: none !important; }
+  /* Mercado Livre oculto por agora */
+  .topnav-link[data-report="ml"],
+  .cross-link[data-report="ml"],
+  #report-ml { display: none !important; }
 </style>
 </head>
 <body>
@@ -194463,7 +194467,7 @@ document.querySelectorAll('.panel').forEach(panel => {
   }
   function fromHash() {
     const h = (location.hash || '#report-visitas').replace('#report-', '');
-    showReport((h === 'palavras' || h === 'visitas' || h === 'ml') ? h : 'visitas');
+    showReport((h === 'palavras' || h === 'visitas') ? h : 'visitas');
   }
   document.querySelectorAll('[data-report]').forEach(el => {
     el.addEventListener('click', (e) => {
