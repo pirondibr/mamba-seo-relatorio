@@ -307,6 +307,83 @@
   .delta.down { color: var(--down); }
   .delta.flat { color: var(--muted); }
   .growth-panel { margin-bottom: 1.25rem; }
+  .growth-panel .panel-b { padding: 1rem 1.15rem 1.15rem; }
+  .growth-h3 {
+    font-size: 0.92rem; font-weight: 650; margin: 0 0 0.75rem; color: var(--text);
+  }
+  .growth-stack-chart {
+    display: flex; align-items: flex-end; justify-content: center;
+    gap: 3.5rem; min-height: 260px; padding: 0.5rem 1rem 0.25rem;
+  }
+  .growth-col {
+    display: flex; flex-direction: column; align-items: center; gap: 0.35rem;
+    width: 88px; cursor: default;
+  }
+  .growth-stack {
+    width: 72px; display: flex; flex-direction: column-reverse;
+    border-radius: 10px 10px 4px 4px; overflow: hidden;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  }
+  .stack-seg { width: 100%; flex-shrink: 0; }
+  .growth-col-lbl { font-size: 0.78rem; font-weight: 700; color: var(--muted); text-align: center; }
+  .growth-col-val { font-size: 0.95rem; font-weight: 750; font-variant-numeric: tabular-nums; }
+  .legend-row {
+    display: flex; gap: 0.85rem; flex-wrap: wrap; justify-content: center;
+    margin-top: 0.85rem; font-size: 0.78rem; color: var(--muted);
+  }
+  .legend-item { display: flex; align-items: center; gap: 0.35rem; }
+  .legend-swatch, .band-dot {
+    width: 11px; height: 11px; border-radius: 3px; display: inline-block; flex-shrink: 0;
+  }
+  .band-dot { margin-right: 0.35rem; vertical-align: middle; }
+  .gband-legend {
+    display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.78rem; color: var(--muted);
+    margin-bottom: 0.65rem;
+  }
+  .gband-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .gband-swatch {
+    width: 12px; height: 12px; border-radius: 3px; display: inline-block;
+  }
+  .gband-swatch.before { background: #cbd5e1; }
+  .gband-swatch.after { background: #00876c; }
+  .gband-chart {
+    display: flex; align-items: flex-end; gap: 0.75rem; overflow-x: auto;
+    min-height: 200px; padding: 0.35rem 0.15rem 0.25rem;
+  }
+  .gband-col {
+    flex: 1 0 72px; max-width: 100px;
+    display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+  }
+  .gband-vals {
+    display: flex; gap: 0.35rem; font-size: 0.7rem; font-variant-numeric: tabular-nums;
+  }
+  .gband-pair {
+    display: flex; align-items: flex-end; gap: 5px; height: 150px;
+  }
+  .gband-bar {
+    width: 22px; border-radius: 6px 6px 2px 2px; min-height: 4px;
+  }
+  .gband-bar.gband-before { background: #cbd5e1; }
+  .gband-lbl { font-size: 0.72rem; font-weight: 700; color: var(--muted); }
+  .gband-delta { font-size: 0.75rem; font-weight: 700; }
+  .chart-tip {
+    position: fixed; z-index: 50; min-width: 168px; padding: 0.65rem 0.75rem;
+    background: #0f172a; color: #f8fafc; border-radius: 10px;
+    box-shadow: 0 10px 28px rgba(15,23,42,0.28); font-size: 0.78rem;
+    pointer-events: none; opacity: 0; transform: translateY(4px);
+    transition: opacity 0.12s ease, transform 0.12s ease;
+  }
+  .chart-tip.show { opacity: 1; transform: translateY(0); }
+  .chart-tip .tip-title { font-weight: 700; margin-bottom: 0.4rem; }
+  .chart-tip .tip-row { display: flex; align-items: center; gap: 0.4rem; padding: 0.15rem 0; }
+  .chart-tip .tip-swatch { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
+  .chart-tip .tip-lab { color: #cbd5e1; flex: 1; }
+  .chart-tip .tip-val { font-weight: 650; font-variant-numeric: tabular-nums; }
+  .chart-tip .tip-total {
+    display: flex; justify-content: space-between; gap: 1rem;
+    margin-top: 0.35rem; padding-top: 0.35rem;
+    border-top: 1px solid rgba(148,163,184,0.35); font-weight: 700;
+  }
   .growth-table .delta { font-weight: 700; font-size: 0.9rem; }
   .growth-table tr.growth-total td {
     background: var(--surface2);
@@ -149537,7 +149614,81 @@ document.querySelectorAll('.tab').forEach(btn => {
           <span class="chip">Julho 2026 → Outubro 2026</span>
         </div>
       </div>
-      <div class="table-wrap" style="max-height:none">
+      <div class="panel-b">
+        <h3 class="growth-h3">Distribuição por posição</h3>
+        <div class="growth-stack-chart">
+          <div class="growth-col has-tip" data-tip="&lt;div class=&quot;tip-title&quot;&gt;Julho 2026&lt;/div&gt;&lt;div class=&quot;tip-row&quot;&gt;&lt;span class=&quot;tip-swatch&quot; style=&quot;background:#00876c&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tip-lab&quot;&gt;Top 3&lt;/span&gt;&lt;span class=&quot;tip-val&quot;&gt;153&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;tip-row&quot;&gt;&lt;span class=&quot;tip-swatch&quot; style=&quot;background:#6aaa96&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tip-lab&quot;&gt;4-10&lt;/span&gt;&lt;span class=&quot;tip-val&quot;&gt;271&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;tip-row&quot;&gt;&lt;span class=&quot;tip-swatch&quot; style=&quot;background:#f0c75e&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tip-lab&quot;&gt;11-20&lt;/span&gt;&lt;span class=&quot;tip-val&quot;&gt;363&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;tip-row&quot;&gt;&lt;span class=&quot;tip-swatch&quot; style=&quot;background:#e8903d&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tip-lab&quot;&gt;21-50&lt;/span&gt;&lt;span class=&quot;tip-val&quot;&gt;387&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;tip-row&quot;&gt;&lt;span class=&quot;tip-swatch&quot; style=&quot;background:#d43d51&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tip-lab&quot;&gt;51-100&lt;/span&gt;&lt;span class=&quot;tip-val&quot;&gt;44&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;tip-total&quot;&gt;&lt;span&gt;Total 1–100&lt;/span&gt;&lt;span&gt;1.218&lt;/span&gt;&lt;/div&gt;"><div class="growth-stack" style="height:190px"><div class="stack-seg" style="height:7px;background:#d43d51" title="51-100: 44"></div><div class="stack-seg" style="height:60px;background:#e8903d" title="21-50: 387"></div><div class="stack-seg" style="height:57px;background:#f0c75e" title="11-20: 363"></div><div class="stack-seg" style="height:42px;background:#6aaa96" title="4-10: 271"></div><div class="stack-seg" style="height:24px;background:#00876c" title="Top 3: 153"></div></div><span class="growth-col-lbl">Julho 2026</span><span class="growth-col-val">1.218</span></div>
+          <div class="growth-col has-tip" data-tip="&lt;div class=&quot;tip-title&quot;&gt;Outubro 2026&lt;/div&gt;&lt;div class=&quot;tip-row&quot;&gt;&lt;span class=&quot;tip-swatch&quot; style=&quot;background:#00876c&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tip-lab&quot;&gt;Top 3&lt;/span&gt;&lt;span class=&quot;tip-val&quot;&gt;153&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;tip-row&quot;&gt;&lt;span class=&quot;tip-swatch&quot; style=&quot;background:#6aaa96&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tip-lab&quot;&gt;4-10&lt;/span&gt;&lt;span class=&quot;tip-val&quot;&gt;395&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;tip-row&quot;&gt;&lt;span class=&quot;tip-swatch&quot; style=&quot;background:#f0c75e&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tip-lab&quot;&gt;11-20&lt;/span&gt;&lt;span class=&quot;tip-val&quot;&gt;369&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;tip-row&quot;&gt;&lt;span class=&quot;tip-swatch&quot; style=&quot;background:#e8903d&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tip-lab&quot;&gt;21-50&lt;/span&gt;&lt;span class=&quot;tip-val&quot;&gt;415&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;tip-row&quot;&gt;&lt;span class=&quot;tip-swatch&quot; style=&quot;background:#d43d51&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tip-lab&quot;&gt;51-100&lt;/span&gt;&lt;span class=&quot;tip-val&quot;&gt;75&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;tip-total&quot;&gt;&lt;span&gt;Total 1–100&lt;/span&gt;&lt;span&gt;1.407&lt;/span&gt;&lt;/div&gt;"><div class="growth-stack" style="height:220px"><div class="stack-seg" style="height:12px;background:#d43d51" title="51-100: 75"></div><div class="stack-seg" style="height:65px;background:#e8903d" title="21-50: 415"></div><div class="stack-seg" style="height:58px;background:#f0c75e" title="11-20: 369"></div><div class="stack-seg" style="height:62px;background:#6aaa96" title="4-10: 395"></div><div class="stack-seg" style="height:24px;background:#00876c" title="Top 3: 153"></div></div><span class="growth-col-lbl">Outubro 2026</span><span class="growth-col-val">1.407</span></div>
+        </div>
+        <div class="legend-row"><span class="legend-item"><span class="legend-swatch" style="background:#00876c"></span>Top 3</span><span class="legend-item"><span class="legend-swatch" style="background:#6aaa96"></span>4-10</span><span class="legend-item"><span class="legend-swatch" style="background:#f0c75e"></span>11-20</span><span class="legend-item"><span class="legend-swatch" style="background:#e8903d"></span>21-50</span><span class="legend-item"><span class="legend-swatch" style="background:#d43d51"></span>51-100</span></div>
+        <h3 class="growth-h3" style="margin-top:1.25rem">Comparativo por faixa</h3>
+        <div class="gband-legend">
+          <span><i class="gband-swatch before"></i>Julho 2026</span>
+          <span><i class="gband-swatch after"></i>Outubro 2026</span>
+        </div>
+        <div class="gband-chart">
+        <div class="gband-col">
+          <div class="gband-vals">
+            <span class="muted">153</span>
+            <span style="color:#00876c;font-weight:700">153</span>
+          </div>
+          <div class="gband-pair">
+            <div class="gband-bar gband-before" style="height:52px" title="Julho 2026: 153"></div>
+            <div class="gband-bar gband-after" style="height:52px;background:#00876c" title="Outubro 2026: 153"></div>
+          </div>
+          <span class="gband-lbl">Top 3</span>
+          <span class="gband-delta flat">0</span>
+        </div>
+        <div class="gband-col">
+          <div class="gband-vals">
+            <span class="muted">271</span>
+            <span style="color:#6aaa96;font-weight:700">395</span>
+          </div>
+          <div class="gband-pair">
+            <div class="gband-bar gband-before" style="height:91px" title="Julho 2026: 271"></div>
+            <div class="gband-bar gband-after" style="height:133px;background:#6aaa96" title="Outubro 2026: 395"></div>
+          </div>
+          <span class="gband-lbl">4-10</span>
+          <span class="gband-delta up">+124</span>
+        </div>
+        <div class="gband-col">
+          <div class="gband-vals">
+            <span class="muted">363</span>
+            <span style="color:#f0c75e;font-weight:700">369</span>
+          </div>
+          <div class="gband-pair">
+            <div class="gband-bar gband-before" style="height:122px" title="Julho 2026: 363"></div>
+            <div class="gband-bar gband-after" style="height:124px;background:#f0c75e" title="Outubro 2026: 369"></div>
+          </div>
+          <span class="gband-lbl">11-20</span>
+          <span class="gband-delta up">+6</span>
+        </div>
+        <div class="gband-col">
+          <div class="gband-vals">
+            <span class="muted">387</span>
+            <span style="color:#e8903d;font-weight:700">415</span>
+          </div>
+          <div class="gband-pair">
+            <div class="gband-bar gband-before" style="height:131px" title="Julho 2026: 387"></div>
+            <div class="gband-bar gband-after" style="height:140px;background:#e8903d" title="Outubro 2026: 415"></div>
+          </div>
+          <span class="gband-lbl">21-50</span>
+          <span class="gband-delta up">+28</span>
+        </div>
+        <div class="gband-col">
+          <div class="gband-vals">
+            <span class="muted">44</span>
+            <span style="color:#d43d51;font-weight:700">75</span>
+          </div>
+          <div class="gband-pair">
+            <div class="gband-bar gband-before" style="height:15px" title="Julho 2026: 44"></div>
+            <div class="gband-bar gband-after" style="height:25px;background:#d43d51" title="Outubro 2026: 75"></div>
+          </div>
+          <span class="gband-lbl">51-100</span>
+          <span class="gband-delta up">+31</span>
+        </div></div>
+      </div>
+      <div class="table-wrap" style="max-height:none;border-top:1px solid var(--border)">
         <table class="growth-table">
           <thead>
             <tr>
@@ -149553,7 +149704,10 @@ document.querySelectorAll('.tab').forEach(btn => {
             
         <tr>
           <td class="rank">1</td>
-          <td class="kw"><span class="kw-text">Top 3</span></td>
+          <td class="kw">
+            <span class="band-dot" style="background:#00876c"></span>
+            <span class="kw-text">Top 3</span>
+          </td>
           <td class="num">153</td>
           <td class="num">153</td>
           <td class="num"><span class="delta flat">0</span></td>
@@ -149561,7 +149715,10 @@ document.querySelectorAll('.tab').forEach(btn => {
         </tr>
         <tr>
           <td class="rank">2</td>
-          <td class="kw"><span class="kw-text">4-10</span></td>
+          <td class="kw">
+            <span class="band-dot" style="background:#6aaa96"></span>
+            <span class="kw-text">4-10</span>
+          </td>
           <td class="num">271</td>
           <td class="num">395</td>
           <td class="num"><span class="delta up">+124</span></td>
@@ -149569,7 +149726,10 @@ document.querySelectorAll('.tab').forEach(btn => {
         </tr>
         <tr>
           <td class="rank">3</td>
-          <td class="kw"><span class="kw-text">11-20</span></td>
+          <td class="kw">
+            <span class="band-dot" style="background:#f0c75e"></span>
+            <span class="kw-text">11-20</span>
+          </td>
           <td class="num">363</td>
           <td class="num">369</td>
           <td class="num"><span class="delta up">+6</span></td>
@@ -149577,7 +149737,10 @@ document.querySelectorAll('.tab').forEach(btn => {
         </tr>
         <tr>
           <td class="rank">4</td>
-          <td class="kw"><span class="kw-text">21-50</span></td>
+          <td class="kw">
+            <span class="band-dot" style="background:#e8903d"></span>
+            <span class="kw-text">21-50</span>
+          </td>
           <td class="num">387</td>
           <td class="num">415</td>
           <td class="num"><span class="delta up">+28</span></td>
@@ -149585,7 +149748,10 @@ document.querySelectorAll('.tab').forEach(btn => {
         </tr>
         <tr>
           <td class="rank">5</td>
-          <td class="kw"><span class="kw-text">51-100</span></td>
+          <td class="kw">
+            <span class="band-dot" style="background:#d43d51"></span>
+            <span class="kw-text">51-100</span>
+          </td>
           <td class="num">44</td>
           <td class="num">75</td>
           <td class="num"><span class="delta up">+31</span></td>
@@ -183393,7 +183559,7 @@ document.querySelectorAll('.tab').forEach(btn => {
 
 
   <footer>
-    Gerado em 09/10/2026 14:50 · Fonte: Semrush Organic Positions · mambadigital.com.br
+    Gerado em 09/10/2026 14:55 · Fonte: Semrush Organic Positions · mambadigital.com.br
   </footer>
 </div>
 <script>
@@ -183417,6 +183583,33 @@ document.querySelectorAll('.panel').forEach(panel => {
     });
   });
 });
+
+(function () {
+  const tip = document.createElement('div');
+  tip.className = 'chart-tip';
+  tip.setAttribute('role', 'tooltip');
+  document.body.appendChild(tip);
+  function placeTip(e) {
+    const pad = 14;
+    const tw = tip.offsetWidth || 180;
+    const th = tip.offsetHeight || 160;
+    let x = e.clientX + pad;
+    let y = e.clientY + pad;
+    if (x + tw > window.innerWidth - 8) x = e.clientX - tw - pad;
+    if (y + th > window.innerHeight - 8) y = e.clientY - th - pad;
+    tip.style.left = Math.max(8, x) + 'px';
+    tip.style.top = Math.max(8, y) + 'px';
+  }
+  document.querySelectorAll('.has-tip').forEach(col => {
+    col.addEventListener('mouseenter', (e) => {
+      tip.innerHTML = col.getAttribute('data-tip') || '';
+      tip.classList.add('show');
+      placeTip(e);
+    });
+    col.addEventListener('mousemove', placeTip);
+    col.addEventListener('mouseleave', () => tip.classList.remove('show'));
+  });
+})();
 </script>
 </section>
 
