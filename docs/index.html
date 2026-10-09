@@ -193,7 +193,13 @@
     border-radius: 8px 8px 4px 4px;
     transition: opacity 0.15s;
   }
+  .mbar.mbar-imps {
+    background: linear-gradient(180deg, #60a5fa, #2563eb);
+  }
   .mbar:hover { opacity: 0.85; }
+  button.tab[data-view="daily"],
+  #view-daily,
+  #v-view-daily { display: none !important; }
   .mbar-val {
     font-size: 0.72rem;
     font-weight: 700;
@@ -707,6 +713,7 @@
   }
   .cross-link:hover { border-color: var(--accent, #0d9488); }
   button.tab[data-view="focus"], #v-view-focus, #view-focus { display: none !important; }
+  button.tab[data-view="daily"], #v-view-daily, #view-daily { display: none !important; }
 </style>
 </head>
 <body>
@@ -748,9 +755,239 @@
     <div class="card"><div class="label">Páginas</div><div class="value">981</div></div>
   </section>
 
+  <p class="note" style="margin-top:0;margin-bottom:0.85rem">
+    Histórico mensal GSC: <strong style="color:var(--text)">2025-05-27 → 2026-10-06</strong>
+    · 18 meses · * = mês parcial.
+  </p>
   <div class="panel">
-    <div class="panel-h"><h2>Cliques por dia</h2><span class="chip">90 dias</span></div>
-    <div class="chart"><div class="bar" title="2026-07-09: 119 cliques" style="height:50%"></div><div class="bar" title="2026-07-10: 89 cliques" style="height:37%"></div><div class="bar" title="2026-07-11: 64 cliques" style="height:27%"></div><div class="bar" title="2026-07-12: 48 cliques" style="height:20%"></div><div class="bar" title="2026-07-13: 114 cliques" style="height:48%"></div><div class="bar" title="2026-07-14: 180 cliques" style="height:75%"></div><div class="bar" title="2026-07-15: 172 cliques" style="height:72%"></div><div class="bar" title="2026-07-16: 161 cliques" style="height:67%"></div><div class="bar" title="2026-07-17: 103 cliques" style="height:43%"></div><div class="bar" title="2026-07-18: 48 cliques" style="height:20%"></div><div class="bar" title="2026-07-19: 70 cliques" style="height:29%"></div><div class="bar" title="2026-07-20: 135 cliques" style="height:56%"></div><div class="bar" title="2026-07-21: 141 cliques" style="height:59%"></div><div class="bar" title="2026-07-22: 157 cliques" style="height:66%"></div><div class="bar" title="2026-07-23: 134 cliques" style="height:56%"></div><div class="bar" title="2026-07-24: 135 cliques" style="height:56%"></div><div class="bar" title="2026-07-25: 80 cliques" style="height:33%"></div><div class="bar" title="2026-07-26: 67 cliques" style="height:28%"></div><div class="bar" title="2026-07-27: 156 cliques" style="height:65%"></div><div class="bar" title="2026-07-28: 170 cliques" style="height:71%"></div><div class="bar" title="2026-07-29: 158 cliques" style="height:66%"></div><div class="bar" title="2026-07-30: 162 cliques" style="height:68%"></div><div class="bar" title="2026-07-31: 154 cliques" style="height:64%"></div><div class="bar" title="2026-08-01: 126 cliques" style="height:53%"></div><div class="bar" title="2026-08-02: 91 cliques" style="height:38%"></div><div class="bar" title="2026-08-03: 221 cliques" style="height:93%"></div><div class="bar" title="2026-08-04: 237 cliques" style="height:100%"></div><div class="bar" title="2026-08-05: 218 cliques" style="height:91%"></div><div class="bar" title="2026-08-06: 219 cliques" style="height:92%"></div><div class="bar" title="2026-08-07: 163 cliques" style="height:68%"></div><div class="bar" title="2026-08-08: 53 cliques" style="height:22%"></div><div class="bar" title="2026-08-09: 58 cliques" style="height:24%"></div><div class="bar" title="2026-08-10: 181 cliques" style="height:76%"></div><div class="bar" title="2026-08-11: 194 cliques" style="height:81%"></div><div class="bar" title="2026-08-12: 166 cliques" style="height:70%"></div><div class="bar" title="2026-08-13: 154 cliques" style="height:64%"></div><div class="bar" title="2026-08-14: 134 cliques" style="height:56%"></div><div class="bar" title="2026-08-15: 70 cliques" style="height:29%"></div><div class="bar" title="2026-08-16: 49 cliques" style="height:20%"></div><div class="bar" title="2026-08-17: 149 cliques" style="height:62%"></div><div class="bar" title="2026-08-18: 177 cliques" style="height:74%"></div><div class="bar" title="2026-08-19: 152 cliques" style="height:64%"></div><div class="bar" title="2026-08-20: 138 cliques" style="height:58%"></div><div class="bar" title="2026-08-21: 131 cliques" style="height:55%"></div><div class="bar" title="2026-08-22: 53 cliques" style="height:22%"></div><div class="bar" title="2026-08-23: 64 cliques" style="height:27%"></div><div class="bar" title="2026-08-24: 172 cliques" style="height:72%"></div><div class="bar" title="2026-08-25: 236 cliques" style="height:99%"></div><div class="bar" title="2026-08-26: 183 cliques" style="height:77%"></div><div class="bar" title="2026-08-27: 147 cliques" style="height:62%"></div><div class="bar" title="2026-08-28: 127 cliques" style="height:53%"></div><div class="bar" title="2026-08-29: 56 cliques" style="height:23%"></div><div class="bar" title="2026-08-30: 67 cliques" style="height:28%"></div><div class="bar" title="2026-08-31: 159 cliques" style="height:67%"></div><div class="bar" title="2026-09-01: 147 cliques" style="height:62%"></div><div class="bar" title="2026-09-02: 159 cliques" style="height:67%"></div><div class="bar" title="2026-09-03: 152 cliques" style="height:64%"></div><div class="bar" title="2026-09-04: 127 cliques" style="height:53%"></div><div class="bar" title="2026-09-05: 52 cliques" style="height:21%"></div><div class="bar" title="2026-09-06: 71 cliques" style="height:29%"></div><div class="bar" title="2026-09-07: 76 cliques" style="height:32%"></div><div class="bar" title="2026-09-08: 172 cliques" style="height:72%"></div><div class="bar" title="2026-09-09: 169 cliques" style="height:71%"></div><div class="bar" title="2026-09-10: 135 cliques" style="height:56%"></div><div class="bar" title="2026-09-11: 123 cliques" style="height:51%"></div><div class="bar" title="2026-09-12: 98 cliques" style="height:41%"></div><div class="bar" title="2026-09-13: 95 cliques" style="height:40%"></div><div class="bar" title="2026-09-14: 152 cliques" style="height:64%"></div><div class="bar" title="2026-09-15: 142 cliques" style="height:59%"></div><div class="bar" title="2026-09-16: 114 cliques" style="height:48%"></div><div class="bar" title="2026-09-17: 136 cliques" style="height:57%"></div><div class="bar" title="2026-09-18: 141 cliques" style="height:59%"></div><div class="bar" title="2026-09-19: 65 cliques" style="height:27%"></div><div class="bar" title="2026-09-20: 51 cliques" style="height:21%"></div><div class="bar" title="2026-09-21: 144 cliques" style="height:60%"></div><div class="bar" title="2026-09-22: 134 cliques" style="height:56%"></div><div class="bar" title="2026-09-23: 177 cliques" style="height:74%"></div><div class="bar" title="2026-09-24: 171 cliques" style="height:72%"></div><div class="bar" title="2026-09-25: 144 cliques" style="height:60%"></div><div class="bar" title="2026-09-26: 68 cliques" style="height:28%"></div><div class="bar" title="2026-09-27: 81 cliques" style="height:34%"></div><div class="bar" title="2026-09-28: 192 cliques" style="height:81%"></div><div class="bar" title="2026-09-29: 166 cliques" style="height:70%"></div><div class="bar" title="2026-09-30: 160 cliques" style="height:67%"></div><div class="bar" title="2026-10-01: 151 cliques" style="height:63%"></div><div class="bar" title="2026-10-02: 128 cliques" style="height:54%"></div><div class="bar" title="2026-10-03: 55 cliques" style="height:23%"></div><div class="bar" title="2026-10-04: 38 cliques" style="height:16%"></div><div class="bar" title="2026-10-05: 141 cliques" style="height:59%"></div><div class="bar" title="2026-10-06: 159 cliques" style="height:67%"></div></div>
+    <div class="panel-h">
+      <h2>Cliques por mês</h2>
+      <span class="chip">18 meses</span>
+    </div>
+    <div class="mchart">
+        <div class="mbar-col">
+          <div class="mbar-val">504</div>
+          <div class="mbar" style="height:18px" title="Maio 2025: 504 cliques"></div>
+          <div class="mbar-label">mai/25*</div>
+          <div class="mbar-sub muted">5d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">2.888</div>
+          <div class="mbar" style="height:106px" title="Junho 2025: 2.888 cliques"></div>
+          <div class="mbar-label">jun/25</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">3.050</div>
+          <div class="mbar" style="height:112px" title="Julho 2025: 3.050 cliques"></div>
+          <div class="mbar-label">jul/25</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">3.290</div>
+          <div class="mbar" style="height:121px" title="Agosto 2025: 3.290 cliques"></div>
+          <div class="mbar-label">ago/25</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">3.342</div>
+          <div class="mbar" style="height:123px" title="Setembro 2025: 3.342 cliques"></div>
+          <div class="mbar-label">set/25</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">2.884</div>
+          <div class="mbar" style="height:106px" title="Outubro 2025: 2.884 cliques"></div>
+          <div class="mbar-label">out/25</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">2.240</div>
+          <div class="mbar" style="height:82px" title="Novembro 2025: 2.240 cliques"></div>
+          <div class="mbar-label">nov/25</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">1.610</div>
+          <div class="mbar" style="height:59px" title="Dezembro 2025: 1.610 cliques"></div>
+          <div class="mbar-label">dez/25</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">2.768</div>
+          <div class="mbar" style="height:101px" title="Janeiro 2026: 2.768 cliques"></div>
+          <div class="mbar-label">jan/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">3.731</div>
+          <div class="mbar" style="height:137px" title="Fevereiro 2026: 3.731 cliques"></div>
+          <div class="mbar-label">fev/26</div>
+          <div class="mbar-sub muted">28d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">3.527</div>
+          <div class="mbar" style="height:129px" title="Março 2026: 3.527 cliques"></div>
+          <div class="mbar-label">mar/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">3.281</div>
+          <div class="mbar" style="height:120px" title="Abril 2026: 3.281 cliques"></div>
+          <div class="mbar-label">abr/26</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">3.434</div>
+          <div class="mbar" style="height:126px" title="Maio 2026: 3.434 cliques"></div>
+          <div class="mbar-label">mai/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">3.082</div>
+          <div class="mbar" style="height:113px" title="Junho 2026: 3.082 cliques"></div>
+          <div class="mbar-label">jun/26</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">3.682</div>
+          <div class="mbar" style="height:135px" title="Julho 2026: 3.682 cliques"></div>
+          <div class="mbar-label">jul/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">4.345</div>
+          <div class="mbar" style="height:160px" title="Agosto 2026: 4.345 cliques"></div>
+          <div class="mbar-label">ago/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">3.814</div>
+          <div class="mbar" style="height:140px" title="Setembro 2026: 3.814 cliques"></div>
+          <div class="mbar-label">set/26</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">672</div>
+          <div class="mbar" style="height:24px" title="Outubro 2026: 672 cliques"></div>
+          <div class="mbar-label">out/26*</div>
+          <div class="mbar-sub muted">6d</div>
+        </div></div>
+  </div>
+  <div class="panel">
+    <div class="panel-h">
+      <h2>Impressões por mês</h2>
+      <span class="chip">18 meses</span>
+    </div>
+    <div class="mchart">
+        <div class="mbar-col">
+          <div class="mbar-val">59.192</div>
+          <div class="mbar mbar-imps" style="height:14px" title="Maio 2025: 59.192 impressões"></div>
+          <div class="mbar-label">mai/25*</div>
+          <div class="mbar-sub muted">5d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">339.535</div>
+          <div class="mbar mbar-imps" style="height:80px" title="Junho 2025: 339.535 impressões"></div>
+          <div class="mbar-label">jun/25</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">388.969</div>
+          <div class="mbar mbar-imps" style="height:92px" title="Julho 2025: 388.969 impressões"></div>
+          <div class="mbar-label">jul/25</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">402.944</div>
+          <div class="mbar mbar-imps" style="height:95px" title="Agosto 2025: 402.944 impressões"></div>
+          <div class="mbar-label">ago/25</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">407.080</div>
+          <div class="mbar mbar-imps" style="height:96px" title="Setembro 2025: 407.080 impressões"></div>
+          <div class="mbar-label">set/25</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">421.538</div>
+          <div class="mbar mbar-imps" style="height:100px" title="Outubro 2025: 421.538 impressões"></div>
+          <div class="mbar-label">out/25</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">443.223</div>
+          <div class="mbar mbar-imps" style="height:105px" title="Novembro 2025: 443.223 impressões"></div>
+          <div class="mbar-label">nov/25</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">415.195</div>
+          <div class="mbar mbar-imps" style="height:98px" title="Dezembro 2025: 415.195 impressões"></div>
+          <div class="mbar-label">dez/25</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">571.745</div>
+          <div class="mbar mbar-imps" style="height:135px" title="Janeiro 2026: 571.745 impressões"></div>
+          <div class="mbar-label">jan/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">642.493</div>
+          <div class="mbar mbar-imps" style="height:152px" title="Fevereiro 2026: 642.493 impressões"></div>
+          <div class="mbar-label">fev/26</div>
+          <div class="mbar-sub muted">28d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">674.037</div>
+          <div class="mbar mbar-imps" style="height:160px" title="Março 2026: 674.037 impressões"></div>
+          <div class="mbar-label">mar/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">635.737</div>
+          <div class="mbar mbar-imps" style="height:150px" title="Abril 2026: 635.737 impressões"></div>
+          <div class="mbar-label">abr/26</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">615.676</div>
+          <div class="mbar mbar-imps" style="height:146px" title="Maio 2026: 615.676 impressões"></div>
+          <div class="mbar-label">mai/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">435.041</div>
+          <div class="mbar mbar-imps" style="height:103px" title="Junho 2026: 435.041 impressões"></div>
+          <div class="mbar-label">jun/26</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">508.283</div>
+          <div class="mbar mbar-imps" style="height:120px" title="Julho 2026: 508.283 impressões"></div>
+          <div class="mbar-label">jul/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">623.798</div>
+          <div class="mbar mbar-imps" style="height:148px" title="Agosto 2026: 623.798 impressões"></div>
+          <div class="mbar-label">ago/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">571.818</div>
+          <div class="mbar mbar-imps" style="height:135px" title="Setembro 2026: 571.818 impressões"></div>
+          <div class="mbar-label">set/26</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">90.547</div>
+          <div class="mbar mbar-imps" style="height:21px" title="Outubro 2026: 90.547 impressões"></div>
+          <div class="mbar-label">out/26*</div>
+          <div class="mbar-sub muted">6d</div>
+        </div></div>
   </div>
 
   <div class="tabs">
@@ -147856,7 +148093,7 @@
     </p>
     <div class="panel">
       <div class="panel-h">
-        <h2>Visitas / cliques por mês</h2>
+        <h2>Cliques por mês</h2>
         <span class="chip">18 meses</span>
       </div>
       <div class="mchart">
@@ -147965,6 +148202,121 @@
         <div class="mbar-col">
           <div class="mbar-val">672</div>
           <div class="mbar" style="height:24px" title="Outubro 2026: 672 cliques"></div>
+          <div class="mbar-label">out/26*</div>
+          <div class="mbar-sub muted">6d</div>
+        </div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-h">
+        <h2>Impressões por mês</h2>
+        <span class="chip">18 meses</span>
+      </div>
+      <div class="mchart">
+        <div class="mbar-col">
+          <div class="mbar-val">59.192</div>
+          <div class="mbar mbar-imps" style="height:14px" title="Maio 2025: 59.192 impressões"></div>
+          <div class="mbar-label">mai/25*</div>
+          <div class="mbar-sub muted">5d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">339.535</div>
+          <div class="mbar mbar-imps" style="height:80px" title="Junho 2025: 339.535 impressões"></div>
+          <div class="mbar-label">jun/25</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">388.969</div>
+          <div class="mbar mbar-imps" style="height:92px" title="Julho 2025: 388.969 impressões"></div>
+          <div class="mbar-label">jul/25</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">402.944</div>
+          <div class="mbar mbar-imps" style="height:95px" title="Agosto 2025: 402.944 impressões"></div>
+          <div class="mbar-label">ago/25</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">407.080</div>
+          <div class="mbar mbar-imps" style="height:96px" title="Setembro 2025: 407.080 impressões"></div>
+          <div class="mbar-label">set/25</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">421.538</div>
+          <div class="mbar mbar-imps" style="height:100px" title="Outubro 2025: 421.538 impressões"></div>
+          <div class="mbar-label">out/25</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">443.223</div>
+          <div class="mbar mbar-imps" style="height:105px" title="Novembro 2025: 443.223 impressões"></div>
+          <div class="mbar-label">nov/25</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">415.195</div>
+          <div class="mbar mbar-imps" style="height:98px" title="Dezembro 2025: 415.195 impressões"></div>
+          <div class="mbar-label">dez/25</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">571.745</div>
+          <div class="mbar mbar-imps" style="height:135px" title="Janeiro 2026: 571.745 impressões"></div>
+          <div class="mbar-label">jan/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">642.493</div>
+          <div class="mbar mbar-imps" style="height:152px" title="Fevereiro 2026: 642.493 impressões"></div>
+          <div class="mbar-label">fev/26</div>
+          <div class="mbar-sub muted">28d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">674.037</div>
+          <div class="mbar mbar-imps" style="height:160px" title="Março 2026: 674.037 impressões"></div>
+          <div class="mbar-label">mar/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">635.737</div>
+          <div class="mbar mbar-imps" style="height:150px" title="Abril 2026: 635.737 impressões"></div>
+          <div class="mbar-label">abr/26</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">615.676</div>
+          <div class="mbar mbar-imps" style="height:146px" title="Maio 2026: 615.676 impressões"></div>
+          <div class="mbar-label">mai/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">435.041</div>
+          <div class="mbar mbar-imps" style="height:103px" title="Junho 2026: 435.041 impressões"></div>
+          <div class="mbar-label">jun/26</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">508.283</div>
+          <div class="mbar mbar-imps" style="height:120px" title="Julho 2026: 508.283 impressões"></div>
+          <div class="mbar-label">jul/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">623.798</div>
+          <div class="mbar mbar-imps" style="height:148px" title="Agosto 2026: 623.798 impressões"></div>
+          <div class="mbar-label">ago/26</div>
+          <div class="mbar-sub muted">31d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">571.818</div>
+          <div class="mbar mbar-imps" style="height:135px" title="Setembro 2026: 571.818 impressões"></div>
+          <div class="mbar-label">set/26</div>
+          <div class="mbar-sub muted">30d</div>
+        </div>
+        <div class="mbar-col">
+          <div class="mbar-val">90.547</div>
+          <div class="mbar mbar-imps" style="height:21px" title="Outubro 2026: 90.547 impressões"></div>
           <div class="mbar-label">out/26*</div>
           <div class="mbar-sub muted">6d</div>
         </div></div>
@@ -149102,7 +149454,7 @@
     </div>
   </div>
 
-  <footer>Gerado em 09/10/2026 12:24 · API Search Console · mambadigital.com.br</footer>
+  <footer>Gerado em 09/10/2026 14:15 · API Search Console · mambadigital.com.br</footer>
 </div>
 <script>
 document.querySelectorAll('.tab').forEach(btn => {
