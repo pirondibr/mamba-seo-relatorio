@@ -306,6 +306,13 @@
   .delta.up { color: var(--up); }
   .delta.down { color: var(--down); }
   .delta.flat { color: var(--muted); }
+  .growth-panel { margin-bottom: 1.25rem; }
+  .growth-table .delta { font-weight: 700; font-size: 0.9rem; }
+  .growth-table tr.growth-total td {
+    background: var(--surface2);
+    font-weight: 700;
+    border-top: 1px solid var(--border);
+  }
   .main-tabs {
     display: flex;
     gap: 0.4rem;
@@ -149517,6 +149524,87 @@ document.querySelectorAll('.tab').forEach(btn => {
     </div>
   </section>
 
+  
+    <div class="panel growth-panel">
+      <div class="panel-h">
+        <h2>Crescimento de Palavras-chave</h2>
+        <div class="chips">
+          <span class="chip">Estilo Semrush</span>
+          <span class="chip">Julho 2026 → Outubro 2026</span>
+        </div>
+      </div>
+      <div class="table-wrap" style="max-height:none">
+        <table class="growth-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Faixa</th>
+              <th class="num">Julho 2026</th>
+              <th class="num">Outubro 2026</th>
+              <th class="num">Variação</th>
+              <th class="num">%</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td class="rank">1</td>
+          <td class="kw"><span class="kw-text">Top 3</span></td>
+          <td class="num">153</td>
+          <td class="num">153</td>
+          <td class="num"><span class="delta flat">0</span></td>
+          <td class="num"><span class="delta flat">0,0%</span></td>
+        </tr>
+        <tr>
+          <td class="rank">2</td>
+          <td class="kw"><span class="kw-text">4-10</span></td>
+          <td class="num">271</td>
+          <td class="num">395</td>
+          <td class="num"><span class="delta up">+124</span></td>
+          <td class="num"><span class="delta up">+45,8%</span></td>
+        </tr>
+        <tr>
+          <td class="rank">3</td>
+          <td class="kw"><span class="kw-text">11-20</span></td>
+          <td class="num">363</td>
+          <td class="num">369</td>
+          <td class="num"><span class="delta up">+6</span></td>
+          <td class="num"><span class="delta up">+1,7%</span></td>
+        </tr>
+        <tr>
+          <td class="rank">4</td>
+          <td class="kw"><span class="kw-text">21-50</span></td>
+          <td class="num">387</td>
+          <td class="num">415</td>
+          <td class="num"><span class="delta up">+28</span></td>
+          <td class="num"><span class="delta up">+7,2%</span></td>
+        </tr>
+        <tr>
+          <td class="rank">5</td>
+          <td class="kw"><span class="kw-text">51-100</span></td>
+          <td class="num">44</td>
+          <td class="num">75</td>
+          <td class="num"><span class="delta up">+31</span></td>
+          <td class="num"><span class="delta up">+70,5%</span></td>
+        </tr>
+        <tr class="growth-total">
+          <td class="rank"></td>
+          <td class="kw"><span class="kw-text">Total 1–100</span></td>
+          <td class="num">1.218</td>
+          <td class="num">1.407</td>
+          <td class="num"><span class="delta up">+189</span></td>
+          <td class="num"><span class="delta up">+15,5%</span></td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="padding:0.75rem 1.1rem;margin:0">
+        Contagem de <strong>keywords únicas</strong> por faixa exclusiva (melhor posição de cada termo).
+        Top 3 = pos. 1–3 · 4–10 · 11–20 · 21–50 · 51–100.
+      </p>
+    </div>
+    
+
   <section class="mov">
     <div class="mov-grid">
 
@@ -183301,7 +183389,7 @@ document.querySelectorAll('.tab').forEach(btn => {
 
 
   <footer>
-    Gerado em 09/10/2026 12:24 · Fonte: Semrush Organic Positions · mambadigital.com.br
+    Gerado em 09/10/2026 14:50 · Fonte: Semrush Organic Positions · mambadigital.com.br
   </footer>
 </div>
 <script>
