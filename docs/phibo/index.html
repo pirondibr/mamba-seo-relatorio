@@ -577,6 +577,9 @@
   .cross-link:hover { border-color: var(--accent, #0d9488); }
   button.tab[data-view="focus"], #v-view-focus, #view-focus { display: none !important; }
   button.tab[data-view="daily"], #v-view-daily, #view-daily { display: none !important; }
+  .topnav-link[data-report="trafego"],
+  .cross-link[data-report="trafego"],
+  #report-trafego { display: none !important; }
 </style>
 </head>
 <body>
@@ -123673,7 +123676,7 @@ document.querySelectorAll('.tab').forEach(btn => {
 
 <section class="report" id="report-palavras">
   <div class="cross-link-wrap">
-    <a class="cross-link" href="#report-trafego" data-report="trafego">← Tráfego Semrush</a>
+    <a class="cross-link" href="#report-visitas" data-report="visitas">← Relatório Visitas</a>
   </div>
   <div class="wrap">
   <header>
@@ -143115,7 +143118,7 @@ document.querySelectorAll('.tab').forEach(btn => {
   }
   function fromHash() {
     const h = (location.hash || '#report-visitas').replace('#report-', '');
-    showReport((h === 'palavras' || h === 'visitas' || h === 'trafego') ? h : 'visitas');
+    showReport((h === 'palavras' || h === 'visitas') ? h : 'visitas');
   }
   document.querySelectorAll('[data-report]').forEach(el => {
     el.addEventListener('click', (e) => {
