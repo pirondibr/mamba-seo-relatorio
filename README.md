@@ -9,6 +9,8 @@ Inclui Visitas GSC, Palavras Semrush e aba **Mercado Livre** (`#report-ml`).
 
 **Apet Saúde:** https://pirondibr.github.io/mamba-seo-relatorio/apet/
 
+**Phibo:** https://pirondibr.github.io/mamba-seo-relatorio/phibo/
+
 **Clínica Ulisses Odontologia:** https://pirondibr.github.io/mamba-seo-relatorio/ulisses/
 
 **Repo:** https://github.com/pirondibr/mamba-seo-relatorio
