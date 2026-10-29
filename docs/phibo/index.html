@@ -123694,8 +123694,8 @@ document.querySelectorAll('.tab').forEach(btn => {
       ordenadas pela URL (A–Z).
       Filtro padrão: <strong style="color:var(--text)">Sem marca</strong>
       + <strong style="color:var(--text)">Todas as URLs</strong>
-      + <strong style="color:var(--text)">Top 10</strong> (posições 6–10).
-      Posição em faixas exclusivas: Top 1 = só #1 · Top 5 = 2–5 · Top 10 = 6–10 · Top 20 = 11–20.
+      + <strong style="color:var(--text)">Top 10</strong> (posições 1–10).
+      Posição: Top 1 = #1 · Top 5 = 1–5 · Top 10 = 1–10 · Top 20 = 1–20.
     </p>
     <div class="brand-filters" id="p-brand-filters">
       <span class="bf-label">Marca</span>
@@ -123706,10 +123706,10 @@ document.querySelectorAll('.tab').forEach(btn => {
       <button class="filter-btn unique-btn" data-unique-url="1" type="button" title="Cada URL uma vez, com a melhor palavra da página">1 URL por palavra</button>
       <span class="bf-label">Posição</span>
       <button class="filter-btn pos-btn" data-pos-filter="all" type="button">Todas</button>
-      <button class="filter-btn pos-btn" data-pos-filter="1" type="button" title="Só posição 1">Top 1</button>
-      <button class="filter-btn pos-btn" data-pos-filter="5" type="button" title="Posições 2 a 5 (sem o Top 1)">Top 5</button>
-      <button class="filter-btn pos-btn active" data-pos-filter="10" type="button" title="Posições 6 a 10 (sem Top 1 e Top 5)">Top 10</button>
-      <button class="filter-btn pos-btn" data-pos-filter="20" type="button" title="Posições 11 a 20 (sem Top 1, 5 e 10)">Top 20</button>
+      <button class="filter-btn pos-btn" data-pos-filter="1" type="button" title="Posição 1">Top 1</button>
+      <button class="filter-btn pos-btn" data-pos-filter="5" type="button" title="Posições 1 a 5">Top 5</button>
+      <button class="filter-btn pos-btn active" data-pos-filter="10" type="button" title="Posições 1 a 10">Top 10</button>
+      <button class="filter-btn pos-btn" data-pos-filter="20" type="button" title="Posições 1 a 20">Top 20</button>
       <span class="bf-count" id="p-brand-filter-count">
         204 sem marca · 35 com marca ·
         239 palavras · 569 URLs
@@ -143097,7 +143097,7 @@ document.querySelectorAll('.tab').forEach(btn => {
   </div>
 
   <footer>
-    Gerado em 29/10/2026 15:07 · Semrush Organic Positions · phibo.com.br
+    Gerado em 29/10/2026 15:09 · Semrush Organic Positions · phibo.com.br
   </footer>
 </div>
 
@@ -143233,13 +143233,13 @@ document.querySelectorAll('.tab').forEach(btn => {
   const search = root.querySelector('#p-search-current') || root.querySelector('#search-current');
   const table = root.querySelector('#p-table-current') || root.querySelector('#table-current');
   const countEl = root.querySelector('#p-brand-filter-count') || root.querySelector('#brand-filter-count');
-  const posLabels = { all: 'todas as posições', '1': 'Top 1', '5': 'Top 5 (2–5)', '10': 'Top 10 (6–10)', '20': 'Top 20 (11–20)' };
+  const posLabels = { all: 'todas as posições', '1': 'Top 1', '5': 'Top 5 (1–5)', '10': 'Top 10 (1–10)', '20': 'Top 20 (1–20)' };
   function inPosBand(pos, band) {
     if (band === 'all') return true;
     if (band === '1') return pos <= 1;
-    if (band === '5') return pos > 1 && pos <= 5;
-    if (band === '10') return pos > 5 && pos <= 10;
-    if (band === '20') return pos > 10 && pos <= 20;
+    if (band === '5') return pos <= 5;
+    if (band === '10') return pos <= 10;
+    if (band === '20') return pos <= 20;
     return true;
   }
   function applyTable(tbl, q, unique) {
