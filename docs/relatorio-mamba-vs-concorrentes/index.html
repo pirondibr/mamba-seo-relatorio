@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mamba Digital vs concorrentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: uma coluna de leitura larga; resumo primeiro, depois tabela comparativa, evolução e detalhe de posições. Mamba em verde, concorrentes em cinza. */
+:root {
+  --bg: #f2f5f3;
+  --surface: #ffffff;
+  --ink: #13201a;
+  --ink-2: #44524b;
+  --muted: #6b7a73;
+  --line: #dde4e0;
+  --accent: #0e8f63;
+  --accent-strong: #0a6547;
+  --accent-soft: #e2f3ea;
+  --accent-band: #9fd9c1;
+  --neutral: #8f9b95;
+  --neutral-soft: #d3dad6;
+  --warn-ink: #8a4b08;
+  --warn-soft: #fbeedb;
+  --r1: #0a5c40; --r1-ink: #ffffff;
+  --r2: #0e8f63; --r2-ink: #ffffff;
+  --r3: #5fbd98; --r3-ink: #0b1f17;
+  --r4: #abdfc9; --r4-ink: #0b1f17;
+  --r5: #d3dad6; --r5-ink: #13201a;
+  --tip-bg: #13201a; --tip-ink: #f2f5f3; --tip-muted: #a9b8b0;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1211; --surface: #171c1a; --ink: #e8efeb; --ink-2: #bcc8c2; --muted: #8e9c95;
+    --line: #29312d; --accent: #1aa876; --accent-strong: #63d3a9; --accent-soft: #14302a;
+    --accent-band: #1f5f48; --neutral: #76827c; --neutral-soft: #3a433f;
+    --warn-ink: #f0c078; --warn-soft: #3a2c14;
+    --r1: #8de2c1; --r1-ink: #0b1f17; --r2: #3fc092; --r2-ink: #0b1f17;
+    --r3: #1a8f65; --r3-ink: #ffffff; --r4: #14614a; --r4-ink: #ffffff;
+    --r5: #3a433f; --r5-ink: #e8efeb;
+    --tip-bg: #e8efeb; --tip-ink: #13201a; --tip-muted: #55635c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1211; --surface: #171c1a; --ink: #e8efeb; --ink-2: #bcc8c2; --muted: #8e9c95;
+  --line: #29312d; --accent: #1aa876; --accent-strong: #63d3a9; --accent-soft: #14302a;
+  --accent-band: #1f5f48; --neutral: #76827c; --neutral-soft: #3a433f;
+  --warn-ink: #f0c078; --warn-soft: #3a2c14;
+  --r1: #8de2c1; --r1-ink: #0b1f17; --r2: #3fc092; --r2-ink: #0b1f17;
+  --r3: #1a8f65; --r3-ink: #ffffff; --r4: #14614a; --r4-ink: #ffffff;
+  --r5: #3a433f; --r5-ink: #e8efeb;
+  --tip-bg: #e8efeb; --tip-ink: #13201a; --tip-muted: #55635c;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; padding: 40px 20px 64px; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+h1, h2 { font-family: var(--font-display); text-wrap: balance; letter-spacing: -0.02em; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Cabeçalho */
+.top { display: flex; flex-direction: column; gap: 14px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-strong); }
+h1 { font-size: clamp(28px, 4.6vw, 44px); line-height: 1.08; font-weight: 700; max-width: 22ch; }
+.lede { font-size: 17px; color: var(--ink-2); max-width: 62ch; }
+.brands { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
+.brands span { display: inline-flex; align-items: center; gap: 7px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--neutral); flex: none; }
+.dot.me { background: var(--accent); }
+.brands b { color: var(--ink); font-weight: 600; }
+
+/* Blocos */
+section { display: flex; flex-direction: column; gap: 14px; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+h2 { font-size: 22px; font-weight: 700; line-height: 1.2; }
+.sec-sub { font-size: 13px; color: var(--muted); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+.note { font-size: 12.5px; color: var(--muted); max-width: 80ch; }
+
+/* Resumo */
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 6px; }
+.tile .lab { font-size: 13px; color: var(--ink-2); display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.tile .val { font-family: var(--font-display); font-size: 40px; font-weight: 700; line-height: 1; letter-spacing: -0.03em; }
+.tile .cmp { font-size: 13px; color: var(--muted); }
+.tile .cmp b { color: var(--ink); font-weight: 600; }
+.rank { font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.rank.first { background: var(--accent-soft); color: var(--accent-strong); }
+.rank.second { background: var(--warn-soft); color: var(--warn-ink); }
+
+/* Tabela comparativa */
+.scroll { overflow-x: auto; }
+table.cmp { width: 100%; min-width: 780px; border-collapse: collapse; }
+.cmp th { font-size: 12px; font-weight: 600; color: var(--muted); text-align: right; padding: 0 12px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.cmp th:first-child, .cmp td:first-child { text-align: left; padding-left: 12px; }
+.cmp td { padding: 14px 12px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: top; }
+.cmp tr:last-child td { border-bottom: 0; }
+.cmp tr.me td { background: var(--accent-soft); }
+.cmp tr.me td:first-child { border-radius: 10px 0 0 10px; }
+.cmp tr.me td:last-child { border-radius: 0 10px 10px 0; }
+.cmp .name { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.cmp .dom { font-size: 12px; color: var(--muted); padding-left: 17px; }
+.cmp .v { font-size: 15px; color: var(--ink-2); display: inline-flex; align-items: center; gap: 6px; }
+.cmp .v.lead { color: var(--ink); font-weight: 600; }
+.cmp .v.lead::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
+.bar { height: 6px; margin-top: 7px; border-radius: 3px; background: var(--neutral-soft); display: flex; }
+.cmp tr.me .bar { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.bar i { display: block; height: 100%; border-radius: 3px; background: var(--neutral); min-width: 2px; }
+.cmp tr.me .bar i { background: var(--accent); }
+.key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12.5px; color: var(--muted); margin-top: 14px; }
+.key span { display: inline-flex; align-items: center; gap: 7px; }
+.key .lead-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
+.sw { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+
+/* Top 10 por marca */
+.t10 { display: grid; grid-template-columns: max-content 1fr max-content; gap: 14px 16px; align-items: center; }
+.t10 .nm { font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.t10 .track { display: flex; gap: 2px; height: 20px; }
+.t10 .track i { display: block; height: 100%; min-width: 2px; }
+.t10 .track i:first-child { border-radius: 0; }
+.t10 .track i:last-child { border-radius: 0 4px 4px 0; }
+.t10 .a { background: var(--neutral); } .t10 .b { background: var(--neutral-soft); }
+.t10 .me .a { background: var(--accent-strong); } .t10 .me .b { background: var(--accent); }
+.t10 .row { display: contents; }
+.t10 .fig { text-align: right; }
+.t10 .fig b { font-size: 17px; font-weight: 600; }
+.t10 .fig small { display: block; font-size: 12px; color: var(--muted); }
+
+/* Evolução */
+.evo { display: grid; grid-template-columns: 1fr 220px; gap: 24px; }
+.controls { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 16px; margin-bottom: 10px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 9px; padding: 2px; background: var(--bg); }
+.seg button { font: inherit; font-size: 13px; font-weight: 500; color: var(--ink-2); background: none; border: 0; padding: 5px 12px; border-radius: 7px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 0 0 1px var(--line); }
+button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.chart { position: relative; }
+.chart svg { display: block; width: 100%; }
+.chart text { font-family: var(--font-body); font-size: 11px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.chart .endlab { fill: var(--ink); font-weight: 600; font-size: 12px; }
+.chart .ann { fill: var(--ink-2); }
+.tip { position: absolute; top: 0; left: 0; min-width: 150px; background: var(--tip-bg); color: var(--tip-ink); border-radius: 9px; padding: 9px 11px; font-size: 12.5px; pointer-events: none; opacity: 0; transition: opacity .1s; z-index: 2; }
+.tip.on { opacity: 1; }
+.tip .tt { font-weight: 600; margin-bottom: 5px; }
+.tip .tr { display: flex; align-items: center; gap: 7px; }
+.tip .tr span:nth-child(2) { flex: 1; color: var(--tip-muted); }
+.tip .tr b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.tip .tot { margin-top: 5px; padding-top: 5px; border-top: 1px solid color-mix(in srgb, var(--tip-muted) 40%, transparent); }
+.facts { display: flex; flex-direction: column; gap: 16px; border-left: 1px solid var(--line); padding-left: 24px; justify-content: center; }
+.fact .k { font-size: 12.5px; color: var(--muted); }
+.fact .n { font-family: var(--font-display); font-size: 28px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+.fact .d { font-size: 13px; color: var(--ink-2); }
+details { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; }
+summary { font-size: 13px; font-weight: 500; color: var(--ink-2); cursor: pointer; width: fit-content; }
+.months { max-height: 300px; overflow: auto; margin-top: 10px; }
+.months table { border-collapse: collapse; font-size: 13px; width: 100%; max-width: 420px; }
+.months th, .months td { text-align: right; padding: 5px 10px; border-bottom: 1px solid var(--line); }
+.months th { color: var(--muted); font-weight: 600; font-size: 12px; position: sticky; top: 0; background: var(--surface); }
+.months th:first-child, .months td:first-child { text-align: left; }
+
+/* Posições */
+.posbar { display: flex; gap: 2px; height: 28px; }
+.posbar div { border-radius: 4px; min-width: 3px; display: flex; align-items: center; padding-left: 8px; font-size: 12.5px; font-weight: 600; overflow: visible; white-space: nowrap; }
+.posbar div.tight { padding-left: 0; font-size: 0; }
+.poskey { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 16px; }
+.poskey .it { display: flex; flex-direction: column; gap: 2px; font-size: 13px; }
+.poskey .it .h { display: flex; align-items: center; gap: 7px; color: var(--ink-2); }
+.poskey .it b { font-size: 20px; font-weight: 600; font-family: var(--font-display); }
+.poskey .it small { color: var(--muted); font-size: 12px; }
+.cum { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.cum b { color: var(--ink); font-weight: 600; font-size: 15px; margin-left: 6px; }
+
+footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; display: flex; flex-direction: column; gap: 6px; }
+
+@media (max-width: 860px) {
+  .tiles { grid-template-columns: repeat(2, 1fr); }
+  .evo { grid-template-columns: 1fr; }
+  .facts { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 16px; flex-direction: row; justify-content: flex-start; flex-wrap: wrap; gap: 16px 32px; }
+  .poskey { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  body { padding: 24px 16px 48px; }
+  .panel { padding: 16px; }
+  .tile .val { font-size: 32px; }
+  .t10 { grid-template-columns: 1fr max-content; }
+  .t10 .track { grid-column: 1 / -1; order: 3; }
+  .t10 .row { display: grid; grid-template-columns: 1fr max-content; grid-column: 1 / -1; gap: 6px 12px; align-items: center; }
+}
+@media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="eyebrow">Relatório de SEO · Semrush Domain Overview · novembro de 2026</div>
+    <h1>Mamba Digital lidera em autoridade e posições no Top 10</h1>
+    <p class="lede">Entre os quatro sites comparados, a Mamba fica em primeiro em 5 dos 7 indicadores. A Arcos Scale ainda tem mais tráfego orgânico e mais que o dobro de backlinks.</p>
+    <div class="brands">
+      <span><i class="dot me"></i><b>Mamba Digital</b> mambadigital.com.br</span>
+      <span><i class="dot"></i><b>Arcos Scale</b> arcosscale.com.br</span>
+      <span><i class="dot"></i><b>Go Smarter</b> gosmarter.com.br</span>
+      <span><i class="dot"></i><b>Milplace</b> milplace.com.br</span>
+    </div>
+  </header>
+
+  <section aria-labelledby="s1">
+    <div class="sec-head"><h2 id="s1">Onde a Mamba está hoje</h2><span class="sec-sub">Comparação com o melhor concorrente em cada indicador</span></div>
+    <div class="tiles">
+      <div class="tile"><div class="lab">Authority Score <span class="rank first">1º de 4</span></div><div class="val">28</div><div class="cmp"><b>+13 pontos</b> sobre a Go Smarter (15)</div></div>
+      <div class="tile"><div class="lab">Keywords no Top 10 <span class="rank first">1º de 4</span></div><div class="val">533</div><div class="cmp"><b>+61%</b> sobre a Arcos Scale (331)</div></div>
+      <div class="tile"><div class="lab">Tráfego orgânico <span class="rank second">2º de 4</span></div><div class="val">2.300</div><div class="cmp"><b>−8%</b> em relação à Arcos Scale (2.500)</div></div>
+      <div class="tile"><div class="lab">Backlinks <span class="rank second">2º de 4</span></div><div class="val">656</div><div class="cmp"><b>−53%</b> em relação à Arcos Scale (1.400)</div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="s2">
+    <div class="sec-head"><h2 id="s2">Comparativo de marcas</h2><span class="sec-sub">Domain Overview atual · barras na escala do maior valor de cada coluna</span></div>
+    <div class="panel">
+      <div class="scroll"><table class="cmp num" id="cmp"></table></div>
+      <div class="key">
+        <span><i class="lead-dot"></i>Maior valor da coluna</span>
+        <span><i class="sw" style="background:var(--accent)"></i>Mamba Digital</span>
+        <span><i class="sw" style="background:var(--neutral)"></i>Concorrentes</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="s3">
+    <div class="sec-head"><h2 id="s3">Keywords no Top 10 por marca</h2><span class="sec-sub">Última leitura da curva do Domain Overview</span></div>
+    <div class="panel">
+      <div class="t10 num" id="t10"></div>
+      <div class="key">
+        <span><i class="sw" style="background:var(--accent-strong)"></i>Top 3</span>
+        <span><i class="sw" style="background:var(--accent)"></i>Posições 4 a 10</span>
+        <span>Concorrentes em cinza, na mesma ordem</span>
+      </div>
+    </div>
+    <p class="note">A parcela das keywords é uma estimativa: Top 10 dividido pelo total de palavras orgânicas, que o Semrush informa arredondado.</p>
+  </section>
+
+  <section aria-labelledby="s4">
+    <div class="sec-head"><h2 id="s4">Evolução da Mamba no Top 10</h2><span class="sec-sub">Keywords por faixa de posição, mês a mês</span></div>
+    <div class="panel">
+      <div class="evo">
+        <div>
+          <div class="controls">
+            <div class="key" style="margin:0">
+              <span><i class="sw" style="background:var(--accent)"></i>Top 3</span>
+              <span><i class="sw" style="background:var(--accent-band)"></i>Posições 4 a 10</span>
+            </div>
+            <div class="seg" role="group" aria-label="Período do gráfico">
+              <button type="button" id="r2023" aria-pressed="true">Desde 2023</button>
+              <button type="button" id="r2013" aria-pressed="false">Desde 2013</button>
+            </div>
+          </div>
+          <div class="chart" id="chart"><div class="tip" id="tip"></div></div>
+        </div>
+        <div class="facts">
+          <div class="fact"><div class="k">Top 10 em 12 meses</div><div class="n">+138%</div><div class="d num">de 224 (nov/25) para 533 (nov/26)</div></div>
+          <div class="fact"><div class="k">Top 3 em 12 meses</div><div class="n">+211%</div><div class="d num">de 27 para 84</div></div>
+          <div class="fact"><div class="k">Pico no Top 10</div><div class="n num">552</div><div class="d">em setembro de 2026</div></div>
+        </div>
+      </div>
+      <details>
+        <summary>Ver dados mensais desde 2023</summary>
+        <div class="months num" id="months"></div>
+      </details>
+    </div>
+    <p class="note">De 2013 a 2022 o domínio não tinha keywords no Top 10, por isso o gráfico abre em 2023. O arquivo salvo traz a série histórica só da Mamba; as curvas dos concorrentes não vieram junto.</p>
+  </section>
+
+  <section aria-labelledby="s5">
+    <div class="sec-head"><h2 id="s5">Posições da Mamba em outubro de 2026</h2><span class="sec-sub">Export Organic Positions · 1.407 keywords entre as posições 1 e 100</span></div>
+    <div class="panel">
+      <div class="posbar num" id="posbar" role="img" aria-label="Distribuição das 1.407 keywords por faixa de posição"></div>
+      <div class="poskey num" id="poskey"></div>
+      <div class="cum num">
+        <span>Top 1<b>98</b></span><span>Top 3<b>153</b></span><span>Top 5<b>259</b></span><span>Top 10<b>548</b></span><span>Posições 1 a 100<b>1.407</b></span><span>Tráfego no export<b>1.987</b></span>
+      </div>
+    </div>
+    <p class="note">Este bloco vem do export XLSX de Organic Positions, disponível só para a Mamba, e usa uma base diferente da curva do Domain Overview. Por isso o Top 3 aqui (153) não coincide com o da tabela comparativa (84).</p>
+  </section>
+
+  <footer>
+    <span>Fonte: Semrush Domain Overview e Organic Positions. Dados coletados em 11/11/2026, 15:22.</span>
+    <span>Authority, tráfego, keywords, domínios de referência e backlinks são os indicadores da página Visão geral. Top 3 e Top 10 vêm do último ponto da curva de posições.</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var fmt = function (n) { return n.toLocaleString('pt-BR'); };
+  var el = function (tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+
+  // ---------- Dados ----------
+  var BRANDS = [
+    { n: 'Mamba Digital', d: 'mambadigital.com.br', me: true, v: [28, 2300, 1800, 364, 656, 84, 533] },
+    { n: 'Arcos Scale',  d: 'arcosscale.com.br',  v: [11, 2500, 1600, 210, 1400, 22, 331] },
+    { n: 'Go Smarter',   d: 'gosmarter.com.br',   v: [15, 1200, 1100, 251, 388, 17, 148] },
+    { n: 'Milplace',     d: 'milplace.com.br',    v: [9, 220, 37, 278, 452, 1, 1] }
+  ];
+  var COLS = ['Authority Score', 'Tráfego orgânico', 'Palavras orgânicas', 'Domínios de ref.', 'Backlinks', 'Top 3', 'Top 10'];
+  var SERIES = [["Jan/13",0,0],["Fev/13",0,0],["Mar/13",0,0],["Abr/13",0,0],["Mai/13",0,0],["Jun/13",0,0],["Jul/13",0,0],["Ago/13",0,0],["Set/13",0,0],["Out/13",0,0],["Nov/13",0,0],["Dez/13",0,0],["Jan/14",0,0],["Fev/14",0,0],["Mar/14",0,0],["Abr/14",0,0],["Mai/14",0,0],["Jun/14",0,0],["Jul/14",0,0],["Ago/14",0,0],["Set/14",0,0],["Out/14",0,0],["Nov/14",0,0],["Dez/14",0,0],["Jan/15",0,0],["Fev/15",0,0],["Mar/15",0,0],["Abr/15",0,0],["Mai/15",0,0],["Jun/15",0,0],["Jul/15",0,0],["Ago/15",0,0],["Set/15",0,0],["Out/15",0,0],["Nov/15",0,0],["Dez/15",0,0],["Jan/16",0,0],["Fev/16",0,0],["Mar/16",0,0],["Abr/16",0,0],["Mai/16",0,0],["Jun/16",0,0],["Jul/16",0,0],["Ago/16",0,0],["Set/16",0,0],["Out/16",0,0],["Nov/16",0,0],["Dez/16",0,0],["Jan/17",0,0],["Fev/17",0,0],["Mar/17",0,0],["Abr/17",0,0],["Mai/17",0,0],["Jun/17",0,0],["Jul/17",0,0],["Ago/17",0,0],["Set/17",0,0],["Out/17",0,0],["Nov/17",0,0],["Dez/17",0,0],["Jan/18",0,0],["Fev/18",0,0],["Mar/18",0,0],["Abr/18",0,0],["Mai/18",0,0],["Jun/18",0,0],["Jul/18",0,0],["Ago/18",0,0],["Set/18",0,0],["Out/18",0,0],["Nov/18",0,0],["Dez/18",0,0],["Jan/19",0,0],["Fev/19",0,0],["Mar/19",0,0],["Abr/19",0,0],["Mai/19",0,0],["Jun/19",0,0],["Jul/19",0,0],["Ago/19",0,0],["Set/19",0,0],["Out/19",0,0],["Nov/19",0,0],["Dez/19",0,0],["Jan/20",0,0],["Fev/20",0,0],["Mar/20",0,0],["Abr/20",0,0],["Mai/20",0,0],["Jun/20",0,0],["Jul/20",0,0],["Ago/20",0,0],["Set/20",0,0],["Out/20",0,0],["Nov/20",0,0],["Dez/20",0,0],["Jan/21",0,0],["Fev/21",0,0],["Mar/21",0,0],["Abr/21",0,0],["Mai/21",0,0],["Jun/21",0,0],["Jul/21",0,0],["Ago/21",0,0],["Set/21",0,0],["Out/21",0,0],["Nov/21",0,0],["Dez/21",0,0],["Jan/22",0,0],["Fev/22",0,0],["Mar/22",0,0],["Abr/22",0,0],["Mai/22",0,0],["Jun/22",0,0],["Jul/22",0,0],["Ago/22",0,0],["Set/22",0,0],["Out/22",0,0],["Nov/22",0,0],["Dez/22",0,0],["Jan/23",0,0],["Fev/23",0,1],["Mar/23",1,1],["Abr/23",0,0],["Mai/23",1,1],["Jun/23",1,0],["Jul/23",1,0],["Ago/23",1,0],["Set/23",1,1],["Out/23",1,0],["Nov/23",1,0],["Dez/23",1,0],["Jan/24",1,0],["Fev/24",1,0],["Mar/24",1,0],["Abr/24",1,2],["Mai/24",1,0],["Jun/24",1,4],["Jul/24",1,17],["Ago/24",8,74],["Set/24",36,131],["Out/24",43,131],["Nov/24",53,191],["Dez/24",67,192],["Jan/25",56,213],["Fev/25",50,191],["Mar/25",44,206],["Abr/25",36,229],["Mai/25",33,234],["Jun/25",24,222],["Jul/25",25,232],["Ago/25",24,220],["Set/25",25,197],["Out/25",25,200],["Nov/25",27,197],["Dez/25",29,246],["Jan/26",30,257],["Fev/26",31,286],["Mar/26",38,303],["Abr/26",49,320],["Mai/26",49,332],["Jun/26",47,287],["Jul/26",51,322],["Ago/26",71,422],["Set/26",78,474],["Out/26",80,454],["Nov/26",84,449]]; // [mês, top3, 4-10] de jan/13 a nov/26
+  var POS = [['1ª posição', 98], ['Posições 2 e 3', 55], ['Posições 4 e 5', 106], ['Posições 6 a 10', 289], ['Posições 11 a 100', 859]];
+
+  // ---------- Tabela comparativa ----------
+  var cmp = document.getElementById('cmp');
+  var max = COLS.map(function (_, i) { return Math.max.apply(null, BRANDS.map(function (b) { return b.v[i]; })); });
+  var h = '<thead><tr><th scope="col">Marca</th>' + COLS.map(function (c) { return '<th scope="col">' + c + '</th>'; }).join('') + '</tr></thead><tbody>';
+  BRANDS.forEach(function (b) {
+    h += '<tr' + (b.me ? ' class="me"' : '') + '><td><div class="name"><i class="dot' + (b.me ? ' me' : '') + '"></i>' + b.n + '</div><div class="dom">' + b.d + '</div></td>';
+    b.v.forEach(function (v, i) {
+      h += '<td><span class="v' + (v === max[i] ? ' lead' : '') + '">' + fmt(v) + '</span><div class="bar"><i style="width:' + (v / max[i] * 100).toFixed(1) + '%"></i></div></td>';
+    });
+    h += '</tr>';
+  });
+  cmp.innerHTML = h + '</tbody>';
+
+  // ---------- Top 10 por marca ----------
+  var t10 = document.getElementById('t10');
+  BRANDS.forEach(function (b) {
+    var top3 = b.v[5], top10 = b.v[6], share = Math.round(top10 / b.v[2] * 100);
+    var row = el('div', 'row' + (b.me ? ' me' : ''));
+    row.appendChild(el('div', 'nm', '<i class="dot' + (b.me ? ' me' : '') + '"></i>' + b.n));
+    var tr = el('div', 'track');
+    tr.title = b.n + ': ' + top3 + ' no Top 3, ' + (top10 - top3) + ' nas posições 4 a 10';
+    tr.innerHTML = '<i class="a" style="width:' + (top3 / 533 * 100) + '%"></i>' + (top10 - top3 > 0 ? '<i class="b" style="width:' + ((top10 - top3) / 533 * 100) + '%"></i>' : '');
+    row.appendChild(tr);
+    row.appendChild(el('div', 'fig', '<b>' + fmt(top10) + '</b><small>' + fmt(top3) + ' no Top 3 · ≈' + share + '% das keywords</small>'));
+    t10.appendChild(row);
+  });
+
+  // ---------- Posições ----------
+  var total = POS.reduce(function (s, p) { return s + p[1]; }, 0);
+  var posbar = document.getElementById('posbar'), poskey = document.getElementById('poskey');
+  POS.forEach(function (p, i) {
+    var pct = (p[1] / total * 100).toFixed(1).replace('.', ',');
+    var seg = el('div', '', fmt(p[1]));
+    seg.style.cssText = 'flex:' + p[1] + ' 1 0;background:var(--r' + (i + 1) + ');color:var(--r' + (i + 1) + '-ink)';
+    seg.title = p[0] + ': ' + fmt(p[1]) + ' keywords (' + pct + '%)';
+    posbar.appendChild(seg);
+    poskey.appendChild(el('div', 'it', '<span class="h"><i class="sw" style="background:var(--r' + (i + 1) + ')"></i>' + p[0] + '</span><b>' + fmt(p[1]) + '</b><small>' + pct + '% das keywords</small>'));
+  });
+  function fitPos() { [].forEach.call(posbar.children, function (s) { s.classList.remove('tight'); s.classList.toggle('tight', s.clientWidth < 44); }); }
+
+  // ---------- Dados mensais ----------
+  var START23 = SERIES.findIndex(function (r) { return r[0] === 'Jan/23'; });
+  var mh = '<table><thead><tr><th scope="col">Mês</th><th scope="col">Top 3</th><th scope="col">4 a 10</th><th scope="col">Top 10</th></tr></thead><tbody>';
+  SERIES.slice(START23).reverse().forEach(function (r) { mh += '<tr><td>' + r[0].toLowerCase() + '</td><td>' + r[1] + '</td><td>' + r[2] + '</td><td>' + (r[1] + r[2]) + '</td></tr>'; });
+  document.getElementById('months').innerHTML = mh + '</tbody></table>';
+
+  // ---------- Gráfico de evolução ----------
+  var chart = document.getElementById('chart'), tip = document.getElementById('tip');
+  var NS = 'http://www.w3.org/2000/svg', range = 2023, geo = null;
+  function s(tag, attrs, text) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; return e; }
+
+  function draw() {
+    var old = chart.querySelector('svg'); if (old) old.remove();
+    var data = range === 2023 ? SERIES.slice(START23) : SERIES;
+    var W = Math.max(280, chart.clientWidth), H = W < 520 ? 250 : 320;
+    var L = 36, R = 40, T = 14, B = 26, YMAX = 600, n = data.length;
+    var x = function (i) { return L + i / (n - 1) * (W - L - R); };
+    var y = function (v) { return T + (1 - v / YMAX) * (H - T - B); };
+    var svg = s('svg', { viewBox: '0 0 ' + W + ' ' + H, height: H, role: 'img', 'aria-label': 'Keywords da Mamba Digital no Top 3 e nas posições 4 a 10, por mês. Em novembro de 2026: 84 no Top 3 e 533 no Top 10.' });
+
+    [0, 200, 400, 600].forEach(function (v) {
+      svg.appendChild(s('line', { x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: v === 0 ? 'var(--neutral)' : 'var(--line)', 'stroke-width': 1 }));
+      svg.appendChild(s('text', { x: L - 8, y: y(v) + 4, 'text-anchor': 'end' }, v));
+    });
+    var step = range === 2023 ? 1 : (W < 520 ? 4 : 2);
+    data.forEach(function (r, i) {
+      var yr = +r[0].slice(4);
+      if (r[0].slice(0, 3) === 'Jan' && (yr - (range === 2023 ? 23 : 13)) % step === 0) {
+        svg.appendChild(s('text', { x: x(i), y: H - 6, 'text-anchor': i === 0 ? 'start' : 'middle' }, '20' + r[0].slice(4)));
+      }
+    });
+
+    var top = data.map(function (r, i) { return x(i).toFixed(1) + ',' + y(r[1] + r[2]).toFixed(1); });
+    var mid = data.map(function (r, i) { return x(i).toFixed(1) + ',' + y(r[1]).toFixed(1); });
+    var base = x(n - 1).toFixed(1) + ',' + y(0) + ' ' + x(0).toFixed(1) + ',' + y(0);
+    svg.appendChild(s('polygon', { points: top.join(' ') + ' ' + base, fill: 'var(--accent-band)' }));
+    svg.appendChild(s('polygon', { points: mid.join(' ') + ' ' + base, fill: 'var(--accent)' }));
+    svg.appendChild(s('polyline', { points: mid.join(' '), fill: 'none', stroke: 'var(--surface)', 'stroke-width': 2, 'stroke-linejoin': 'round' }));
+    svg.appendChild(s('polyline', { points: top.join(' '), fill: 'none', stroke: 'var(--accent-strong)', 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+
+    // anotação: arrancada em 2024
+    var ia = data.findIndex(function (r) { return r[0] === 'Jul/24'; }), xa = x(ia);
+    if (xa - 190 > L) {
+      svg.appendChild(s('line', { x1: xa, x2: xa, y1: y(0), y2: y(330), stroke: 'var(--neutral)', 'stroke-width': 1 }));
+      svg.appendChild(s('text', { x: xa - 8, y: y(330) + 10, 'text-anchor': 'end', 'class': 'ann' }, 'Arrancada: de 18 em jul/24'));
+      svg.appendChild(s('text', { x: xa - 8, y: y(330) + 25, 'text-anchor': 'end', 'class': 'ann' }, 'para 167 em set/24'));
+    }
+
+    // pontos finais com rótulo
+    var last = data[n - 1];
+    [[last[1] + last[2], 'var(--accent-strong)'], [last[1], 'var(--accent)']].forEach(function (p) {
+      svg.appendChild(s('circle', { cx: x(n - 1), cy: y(p[0]), r: 4.5, fill: p[1], stroke: 'var(--surface)', 'stroke-width': 2 }));
+      svg.appendChild(s('text', { x: x(n - 1) + 9, y: y(p[0]) + 4, 'class': 'endlab' }, p[0]));
+    });
+
+    var cross = s('line', { y1: T, y2: y(0), stroke: 'var(--ink-2)', 'stroke-width': 1, visibility: 'hidden' });
+    var d1 = s('circle', { r: 4, fill: 'var(--accent-strong)', stroke: 'var(--surface)', 'stroke-width': 2, visibility: 'hidden' });
+    var d2 = s('circle', { r: 4, fill: 'var(--accent)', stroke: 'var(--surface)', 'stroke-width': 2, visibility: 'hidden' });
+    svg.appendChild(cross); svg.appendChild(d1); svg.appendChild(d2);
+    chart.appendChild(svg);
+    geo = { data: data, x: x, y: y, n: n, L: L, R: R, W: W, cross: cross, d1: d1, d2: d2 };
+  }
+
+  function hover(ev) {
+    if (!geo) return;
+    var rect = chart.getBoundingClientRect(), px = (ev.touches ? ev.touches[0].clientX : ev.clientX) - rect.left;
+    var i = Math.round((px - geo.L) / (geo.W - geo.L - geo.R) * (geo.n - 1));
+    i = Math.max(0, Math.min(geo.n - 1, i));
+    var r = geo.data[i], cx = geo.x(i);
+    geo.cross.setAttribute('x1', cx); geo.cross.setAttribute('x2', cx);
+    geo.d1.setAttribute('cx', cx); geo.d1.setAttribute('cy', geo.y(r[1] + r[2]));
+    geo.d2.setAttribute('cx', cx); geo.d2.setAttribute('cy', geo.y(r[1]));
+    [geo.cross, geo.d1, geo.d2].forEach(function (e) { e.setAttribute('visibility', 'visible'); });
+    tip.innerHTML = '<div class="tt">' + r[0].toLowerCase().replace('/', '/20') + '</div>' +
+      '<div class="tr"><i class="sw" style="background:var(--accent)"></i><span>Top 3</span><b>' + r[1] + '</b></div>' +
+      '<div class="tr"><i class="sw" style="background:var(--accent-band)"></i><span>Posições 4 a 10</span><b>' + r[2] + '</b></div>' +
+      '<div class="tr tot"><span></span><span>Top 10</span><b>' + (r[1] + r[2]) + '</b></div>';
+    var tw = tip.offsetWidth, left = cx + 14;
+    if (left + tw > geo.W) left = cx - tw - 14;
+    tip.style.transform = 'translate(' + Math.max(0, left) + 'px, 8px)';
+    tip.classList.add('on');
+  }
+  function leave() { if (!geo) return; tip.classList.remove('on'); [geo.cross, geo.d1, geo.d2].forEach(function (e) { e.setAttribute('visibility', 'hidden'); }); }
+  chart.addEventListener('mousemove', hover);
+  chart.addEventListener('touchstart', hover, { passive: true });
+  chart.addEventListener('touchmove', hover, { passive: true });
+  chart.addEventListener('mouseleave', leave);
+
+  function setRange(r) {
+    range = r;
+    document.getElementById('r2023').setAttribute('aria-pressed', r === 2023);
+    document.getElementById('r2013').setAttribute('aria-pressed', r === 2013);
+    leave(); draw();
+  }
+  document.getElementById('r2023').addEventListener('click', function () { setRange(2023); });
+  document.getElementById('r2013').addEventListener('click', function () { setRange(2013); });
+
+  var raf;
+  function relayout() { cancelAnimationFrame(raf); raf = requestAnimationFrame(function () { draw(); fitPos(); }); }
+  window.addEventListener('resize', relayout);
+  draw(); fitPos();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitPos);
+})();
+</script>
+</body>
+</html>
