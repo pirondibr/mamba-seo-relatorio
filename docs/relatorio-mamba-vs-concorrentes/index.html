@@ -304,15 +304,15 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
 
   // ---------- Dados ----------
   var BRANDS = [
-    { n: 'Mamba Digital', d: 'mambadigital.com.br', me: true, v: [28, 2300, 1800, 364, 656, 84, 533] },
-    { n: 'Arcos Scale',  d: 'arcosscale.com.br',  v: [11, 2500, 1600, 210, 1400, 22, 331] },
-    { n: 'Go Smarter',   d: 'gosmarter.com.br',   v: [15, 1200, 1100, 251, 388, 17, 148] },
-    { n: 'Milplace',     d: 'milplace.com.br',    v: [9, 220, 37, 278, 452, 1, 1] },
-    { n: 'Yav',          d: 'yav.com.br',         v: [21, 679, 613, 320, 1200, 13, 87] },
-    { n: 'Echo Data',    d: 'echodata.com.br',    v: [13, 27, 26, 333, 576, 1, 1] },
-    { n: 'Petina',       d: 'petina.com.br',      v: [23, 566, 203, 478, 959, 4, 19] }
+    { n: 'Mamba Digital', d: 'mambadigital.com.br', me: true, v: [84, 533, 28, 2300, 1800, 364, 656] },
+    { n: 'Arcos Scale',  d: 'arcosscale.com.br',  v: [22, 331, 11, 2500, 1600, 210, 1400] },
+    { n: 'Go Smarter',   d: 'gosmarter.com.br',   v: [17, 148, 15, 1200, 1100, 251, 388] },
+    { n: 'Milplace',     d: 'milplace.com.br',    v: [1, 1, 9, 220, 37, 278, 452] },
+    { n: 'Yav',          d: 'yav.com.br',         v: [13, 87, 21, 679, 613, 320, 1200] },
+    { n: 'Echo Data',    d: 'echodata.com.br',    v: [1, 1, 13, 27, 26, 333, 576] },
+    { n: 'Petina',       d: 'petina.com.br',      v: [4, 19, 23, 566, 203, 478, 959] }
   ];
-  var COLS = ['Authority Score', 'Tráfego orgânico', 'Palavras orgânicas', 'Domínios de ref.', 'Backlinks', 'Top 3', 'Top 10'];
+  var COLS = ['Top 3', 'Top 10', 'Authority Score', 'Tráfego orgânico', 'Palavras orgânicas', 'Domínios de ref.', 'Backlinks'];
   var SERIES = [["Jan/13",0,0],["Fev/13",0,0],["Mar/13",0,0],["Abr/13",0,0],["Mai/13",0,0],["Jun/13",0,0],["Jul/13",0,0],["Ago/13",0,0],["Set/13",0,0],["Out/13",0,0],["Nov/13",0,0],["Dez/13",0,0],["Jan/14",0,0],["Fev/14",0,0],["Mar/14",0,0],["Abr/14",0,0],["Mai/14",0,0],["Jun/14",0,0],["Jul/14",0,0],["Ago/14",0,0],["Set/14",0,0],["Out/14",0,0],["Nov/14",0,0],["Dez/14",0,0],["Jan/15",0,0],["Fev/15",0,0],["Mar/15",0,0],["Abr/15",0,0],["Mai/15",0,0],["Jun/15",0,0],["Jul/15",0,0],["Ago/15",0,0],["Set/15",0,0],["Out/15",0,0],["Nov/15",0,0],["Dez/15",0,0],["Jan/16",0,0],["Fev/16",0,0],["Mar/16",0,0],["Abr/16",0,0],["Mai/16",0,0],["Jun/16",0,0],["Jul/16",0,0],["Ago/16",0,0],["Set/16",0,0],["Out/16",0,0],["Nov/16",0,0],["Dez/16",0,0],["Jan/17",0,0],["Fev/17",0,0],["Mar/17",0,0],["Abr/17",0,0],["Mai/17",0,0],["Jun/17",0,0],["Jul/17",0,0],["Ago/17",0,0],["Set/17",0,0],["Out/17",0,0],["Nov/17",0,0],["Dez/17",0,0],["Jan/18",0,0],["Fev/18",0,0],["Mar/18",0,0],["Abr/18",0,0],["Mai/18",0,0],["Jun/18",0,0],["Jul/18",0,0],["Ago/18",0,0],["Set/18",0,0],["Out/18",0,0],["Nov/18",0,0],["Dez/18",0,0],["Jan/19",0,0],["Fev/19",0,0],["Mar/19",0,0],["Abr/19",0,0],["Mai/19",0,0],["Jun/19",0,0],["Jul/19",0,0],["Ago/19",0,0],["Set/19",0,0],["Out/19",0,0],["Nov/19",0,0],["Dez/19",0,0],["Jan/20",0,0],["Fev/20",0,0],["Mar/20",0,0],["Abr/20",0,0],["Mai/20",0,0],["Jun/20",0,0],["Jul/20",0,0],["Ago/20",0,0],["Set/20",0,0],["Out/20",0,0],["Nov/20",0,0],["Dez/20",0,0],["Jan/21",0,0],["Fev/21",0,0],["Mar/21",0,0],["Abr/21",0,0],["Mai/21",0,0],["Jun/21",0,0],["Jul/21",0,0],["Ago/21",0,0],["Set/21",0,0],["Out/21",0,0],["Nov/21",0,0],["Dez/21",0,0],["Jan/22",0,0],["Fev/22",0,0],["Mar/22",0,0],["Abr/22",0,0],["Mai/22",0,0],["Jun/22",0,0],["Jul/22",0,0],["Ago/22",0,0],["Set/22",0,0],["Out/22",0,0],["Nov/22",0,0],["Dez/22",0,0],["Jan/23",0,0],["Fev/23",0,1],["Mar/23",1,1],["Abr/23",0,0],["Mai/23",1,1],["Jun/23",1,0],["Jul/23",1,0],["Ago/23",1,0],["Set/23",1,1],["Out/23",1,0],["Nov/23",1,0],["Dez/23",1,0],["Jan/24",1,0],["Fev/24",1,0],["Mar/24",1,0],["Abr/24",1,2],["Mai/24",1,0],["Jun/24",1,4],["Jul/24",1,17],["Ago/24",8,74],["Set/24",36,131],["Out/24",43,131],["Nov/24",53,191],["Dez/24",67,192],["Jan/25",56,213],["Fev/25",50,191],["Mar/25",44,206],["Abr/25",36,229],["Mai/25",33,234],["Jun/25",24,222],["Jul/25",25,232],["Ago/25",24,220],["Set/25",25,197],["Out/25",25,200],["Nov/25",27,197],["Dez/25",29,246],["Jan/26",30,257],["Fev/26",31,286],["Mar/26",38,303],["Abr/26",49,320],["Mai/26",49,332],["Jun/26",47,287],["Jul/26",51,322],["Ago/26",71,422],["Set/26",78,474],["Out/26",80,454],["Nov/26",84,449]]; // [mês, top3, 4-10] de jan/13 a nov/26
   var POS = [['1ª posição', 98], ['Posições 2 e 3', 55], ['Posições 4 e 5', 106], ['Posições 6 a 10', 289], ['Posições 11 a 100', 859]];
 
@@ -332,7 +332,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
   // ---------- Top 10 por marca ----------
   var t10 = document.getElementById('t10');
   BRANDS.forEach(function (b) {
-    var top3 = b.v[5], top10 = b.v[6], share = Math.round(top10 / b.v[2] * 100);
+    var top3 = b.v[0], top10 = b.v[1], share = Math.round(top10 / b.v[4] * 100);
     var row = el('div', 'row' + (b.me ? ' me' : ''));
     row.appendChild(el('div', 'nm', '<i class="dot' + (b.me ? ' me' : '') + '"></i>' + b.n));
     var tr = el('div', 'track');
@@ -396,12 +396,13 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     svg.appendChild(s('polyline', { points: mid.join(' '), fill: 'none', stroke: 'var(--surface)', 'stroke-width': 2, 'stroke-linejoin': 'round' }));
     svg.appendChild(s('polyline', { points: top.join(' '), fill: 'none', stroke: 'var(--accent-strong)', 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
 
-    // anotação: arrancada em 2024
-    var ia = data.findIndex(function (r) { return r[0] === 'Jul/24'; }), xa = x(ia);
-    if (xa - 190 > L) {
-      svg.appendChild(s('line', { x1: xa, x2: xa, y1: y(0), y2: y(330), stroke: 'var(--neutral)', 'stroke-width': 1 }));
-      svg.appendChild(s('text', { x: xa - 8, y: y(330) + 10, 'text-anchor': 'end', 'class': 'ann' }, 'Arrancada: de 18 em jul/24'));
-      svg.appendChild(s('text', { x: xa - 8, y: y(330) + 25, 'text-anchor': 'end', 'class': 'ann' }, 'para 167 em set/24'));
+    // etiqueta: início de trabalho (jul/26)
+    var ia = data.findIndex(function (r) { return r[0] === 'Jul/26'; }), xa = x(ia);
+    if (ia >= 0) {
+      svg.appendChild(s('line', { x1: xa, x2: xa, y1: T, y2: y(0), stroke: '#d97706', 'stroke-width': 1.4, 'stroke-dasharray': '4 3' }));
+      var pill = s('rect', { x: xa - 34, y: 2, width: 68, height: 16, rx: 8, fill: '#fef3c7', stroke: '#f59e0b', 'stroke-width': 1 });
+      svg.appendChild(pill);
+      svg.appendChild(s('text', { x: xa, y: 13.5, 'text-anchor': 'middle', fill: '#92400e', 'font-size': 10, 'font-weight': 700 }, 'Início'));
     }
 
     // pontos finais com rótulo
@@ -429,7 +430,8 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     geo.d1.setAttribute('cx', cx); geo.d1.setAttribute('cy', geo.y(r[1] + r[2]));
     geo.d2.setAttribute('cx', cx); geo.d2.setAttribute('cy', geo.y(r[1]));
     [geo.cross, geo.d1, geo.d2].forEach(function (e) { e.setAttribute('visibility', 'visible'); });
-    tip.innerHTML = '<div class="tt">' + r[0].toLowerCase().replace('/', '/20') + '</div>' +
+    tip.innerHTML = '<div class="tt">' + r[0].toLowerCase().replace('/', '/20')
+      + (r[0] === 'Jul/26' ? ' · início' : '') + '</div>' +
       '<div class="tr"><i class="sw" style="background:var(--accent)"></i><span>Top 3</span><b>' + r[1] + '</b></div>' +
       '<div class="tr"><i class="sw" style="background:var(--accent-band)"></i><span>Posições 4 a 10</span><b>' + r[2] + '</b></div>' +
       '<div class="tr tot"><span></span><span>Top 10</span><b>' + (r[1] + r[2]) + '</b></div>';
